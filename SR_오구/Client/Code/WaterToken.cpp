@@ -20,8 +20,8 @@ HRESULT CWaterToken::Ready_GameObject()
 
 	m_tInfo = { QUEST,
 		WATER,
-		L"숭숭 익스프레스 티켓",
-		L"숭숭 익스프레스를 이용할 수 있는 티켓이다.",
+		L"물의 증표",
+		L"흰 새가 잃어버린 물의 증표이다. 다시 가져다 주자!",
 		1, 1 };
 
 	FAILED_CHECK_RETURN(Add_Component(), E_FAIL);

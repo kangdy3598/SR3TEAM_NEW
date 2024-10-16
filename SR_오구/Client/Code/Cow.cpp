@@ -21,7 +21,7 @@ HRESULT CCow::Ready_GameObject()
     m_pAnimatorCom->CreateAnimation(L"Cow", m_pNPCTex, _vec2(0.f, 0.f), _vec2(128.f, 128.f), _vec2(128.f, 0.f), 0.2f, 3);
 
     m_tInfo.pName = L"¼Ò ¾ÆÀú¾¾";
-    m_tInfo.pContent = L"Èì.. ÈìÈì... Å©Èì.....Èì.. Á¶½ÉÈ÷ ´Ù³à¿À°Å¶ó....";
+    m_tInfo.pContent = L"¹» ºÁ? (ÆÜ)";
 
     return S_OK;
 }
@@ -71,6 +71,9 @@ void CCow::OnCollision(CGameObject* _pOther)
 
             m_pTextBox->Set_Text(m_tInfo); //´ëÈ­Ã¢ ÅØ½ºÆ® ¼¼ÆÃ
             m_pTextBox->CallTextBox(true); //´ëÈ­Ã¢ È£Ãâ
+            Play_Sound(L"Demage.mp3", SOUND_SURROUNDING, 0.3f);
+            //¸Â´Â »ç¿îµå
+            m_pPlayer->SetPlayerCurHP(-1);
         }
     }
 

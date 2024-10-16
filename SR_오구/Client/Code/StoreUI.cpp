@@ -99,7 +99,7 @@ void CStoreUI::Add_Item(CItem* _Item)
 {
     m_ItemList.push_back(_Item); // 해당 필터 벡터 뒤에 넣어줌
     Set_InvenPos(m_ItemList.size() - 1);
-    _Item->Set_ItemPos(m_vInvenPos); //인벤 위치를 저장해둔 
+    _Item->Set_StorePos(m_vInvenPos); //스토어 위치를 저장해둔 
 }
 
 HRESULT CStoreUI::Add_Component()
@@ -126,7 +126,7 @@ HRESULT CStoreUI::Add_Component()
 
 void CStoreUI::Key_Input(const _float& fTimeDelta)
 {
-    if (Engine::GetKeyDown(DIK_D))
+    if (Engine::GetKeyDown(DIK_P))
     {
         m_ItemList.clear();
         m_bCall = false;

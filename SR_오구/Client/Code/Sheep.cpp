@@ -1,8 +1,9 @@
 #include "pch.h"
 #include "Sheep.h"
+#include "ItemUI.h"
 
 CSheep::CSheep(LPDIRECT3DDEVICE9 pGraphicDev)
-    :CQuestNPC(pGraphicDev)
+    :CQuestNPC(pGraphicDev), m_iAppleCount(0)
 {
 }
 
@@ -21,7 +22,7 @@ HRESULT CSheep::Ready_GameObject()
     m_pAnimatorCom->CreateAnimation(L"Sheep", m_pNPCTex, _vec2(0.f, 0.f), _vec2(128.f, 128.f), _vec2(128.f, 0.f), 0.2f, 3);
 
     m_tInfo.pName = L"양 아줌마";
-    m_tInfo.pContent = L"어디가니? 어디든 조심히 다녀오렴.";
+    m_tInfo.pContent = L"출출하지 않니? 이거라도 가져가렴.";
 
     return S_OK;
 }
@@ -69,8 +70,24 @@ void CSheep::OnCollision(CGameObject* _pOther)
         {
             m_pInterButton->CallButton(false); // 대화 중일 경우 버튼 출력이 필요 없음!!!!
 
-            m_pTextBox->Set_Text(m_tInfo); //대화창 텍스트 세팅
-            m_pTextBox->CallTextBox(true); //대화창 호출
+            if (m_iAppleCount < 3)
+            {
+                m_pTextBox->Set_Text(m_tInfo); //대화창 텍스트 세팅
+                m_pTextBox->CallTextBox(true); //대화창 호출
+
+                CGameObject* pGameObject = dynamic_cast<CBigFruit*>(CBigFruit::Create(m_pGraphicDev));
+                pGameObject->LateReady_GameObject();
+                m_pPlayer->GetPlayerInventory()->Add_Item(dynamic_cast<CItem*>(pGameObject));
+                Play_Sound(L"SFX_652_OguItemAddSpecial.wav", SOUND_SURROUNDING, 0.5f);
+                ++m_iAppleCount;
+            }
+            else
+            {
+                m_tInfo.pContent = L"더는 안돼. 돌아가.";
+                m_pTextBox->Set_Text(m_tInfo); //대화창 텍스트 세팅
+                m_pTextBox->CallTextBox(true); //대화창 호출
+            }
+            
         }
     }
 

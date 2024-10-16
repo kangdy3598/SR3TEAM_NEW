@@ -23,7 +23,7 @@ public:
 
 private:
 	HRESULT    Add_Component();
-
+	_int	   m_iAppleCount;
 public:
 	static CSheep* Create(LPDIRECT3DDEVICE9 pGraphicDev);
 

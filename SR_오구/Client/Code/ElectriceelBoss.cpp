@@ -8,7 +8,7 @@
 #include "Stone.h"
 #include "HitEffect.h"
 #include "VictoryUI.h"
-
+#include "WaterToken.h"
 
 CElectriceelBoss::CElectriceelBoss(LPDIRECT3DDEVICE9 pGraphicDev)
     :Engine::CGameObject(pGraphicDev)
@@ -21,8 +21,8 @@ CElectriceelBoss::CElectriceelBoss(LPDIRECT3DDEVICE9 pGraphicDev)
 {
 
     m_tInfo.pBossName = L"ÃµµÕ ¹ìÀå¾î";
-    m_tInfo.iMaxHP = 5;
-    m_tInfo.iCurHP = 5;
+    m_tInfo.iMaxHP = 6;
+    m_tInfo.iCurHP = 1;
 }
 
 CElectriceelBoss::~CElectriceelBoss()
@@ -1013,6 +1013,21 @@ void CElectriceelBoss::OnCollisionEnter(CGameObject* _pOther)
 
             Engine::StopSound(SOUND_BGM);
             Play_Sound(L"BGM_30_BossClear.wav", SOUND_BGM, 0.3f);
+
+
+            CGameObject* pGameObject = CWaterToken::Create(m_pGraphicDev);
+            NULL_CHECK_RETURN(pGameObject);
+
+            dynamic_cast<CWaterToken*>(pGameObject)->Set_DropItem(_vec3(500.f, 21.f, 500.f));
+            FAILED_CHECK_RETURN(
+                Get_Layer(L"Layer_GameLogic")->Add_GameObject(L"Item_WaterToken", pGameObject));
+
+            CManagement::GetInstance()->GetCurScenePtr()->Add_ObjectGroup(GROUP_TYPE::OBJECT, pGameObject);
+
+            dynamic_cast<CWaterToken*>(pGameObject)->LateReady_GameObject();
+
+            return ;
+            
         }
     }
 

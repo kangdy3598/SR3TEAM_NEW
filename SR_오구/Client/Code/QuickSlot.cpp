@@ -71,6 +71,8 @@ void CQuickSlot::Use_QuickItem(_int _iIdx)
     if (nullptr == m_pQuickSlot[_iIdx])
         return;
     m_pQuickSlot[_iIdx]->Use_Item();
+    if (m_pQuickSlot[_iIdx]->Get_Info().iItemCount <= 0)
+        m_pQuickSlot[_iIdx] = nullptr;
 }
 
 void CQuickSlot::BulkingSlot(const _float& fTimeDelta)

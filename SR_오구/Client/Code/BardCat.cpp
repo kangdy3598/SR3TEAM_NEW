@@ -23,7 +23,7 @@ HRESULT CBardCat::Ready_GameObject()
     m_pAnimatorCom->CreateAnimation(L"BardCatSong", m_pNPCTex, _vec2(0.f, 128.f), _vec2(128.f, 128.f), _vec2(128.f, 0.f), 0.12f, 7);
 
     m_tInfo.pName = L"음유시인";
-    m_tInfo.pContent = L"저 문을 열고 들어오다니..! 당신이 용사님이시군요!!!!!!! 용사님을 위해 만든 노래가 있어요!";
+    m_tInfo.pContent = L"저 문을 열고 들어오다니..! 당신이 용사님이시군요!!!!!!! 용사님을 위해 만든 노래가 있어요!!!";
 
     m_eState = CAT_IDLE;
 

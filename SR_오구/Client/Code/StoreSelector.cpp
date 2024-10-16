@@ -186,7 +186,7 @@ void CStoreSelector::Update_ItemInfo()
 
     m_pItem = m_pStore->Get_Item(m_iCurIdx); // 현재 아이템 정보
     _vec3 vPos;
-    vPos = m_pItem->Get_ItemPos(); // 아이템의 위치
+    vPos = m_pItem->Get_StorePos(); // 아이템의 위치
     m_pTransformCom->m_vInfo[INFO_POS] = vPos; // 위치를 아이템의 위치로
     m_pTransformCom->m_vInfo[INFO_POS].x += 2.2f;
     m_tCopyInfo = m_pItem->Get_ItemInfo(); // 아이템 텍스트정보를 복사 

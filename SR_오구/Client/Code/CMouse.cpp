@@ -152,18 +152,17 @@ void CMouse::OnCollision(CGameObject* _pOther)
                 Engine::Play_Sound(L"SFX_446_QuestClear.wav", SOUND_EFFECT, 1.f);
 
                 g_bQuestClear = true;
-                m_tInfo.pContent = L"역시 약한건 싫은가 보군. ??키를 눌러 스킬을 사용해보게!";
+                m_tInfo.pContent = L"역시 약한건 싫은가 보군. 스페이스 바를 눌러 스킬을 사용해보게!";
                 m_pTextBox->Set_Text(m_tInfo); //대화창 텍스트 세팅
                 m_pQuestUI->Get_QuestArray()->pop_back();
             }
         }
-
     }
 
     if (!m_bConversation)
     {
         m_pInterButton->CallButton(true); // 대화중이 아닐 때 버튼 활성화
-        // 대화하기[S]
+        // 대화하기[S] 버튼 호출임
     }
 }
 
@@ -210,7 +209,6 @@ CMouse* CMouse::Create(LPDIRECT3DDEVICE9 pGraphicDev)
         MSG_BOX("CMouse Create Failed");
         return nullptr;
     }
-
     return pNPC;
 }
 

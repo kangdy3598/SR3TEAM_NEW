@@ -23,6 +23,7 @@ private:
 
 	CTexture* m_pCountRCTextureCom;
 	CTransform* m_pCountRCTransformCom;
+
 public:
 	static CBigFruit* Create(LPDIRECT3DDEVICE9 pGraphicDev);
 	static _bool	g_Acquired;

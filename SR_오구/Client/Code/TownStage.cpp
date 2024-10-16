@@ -1,6 +1,6 @@
 ﻿#include "pch.h"
 #include "TownStage.h"
-
+#include "WorldHeartStage.h"
 
 CTownStage::CTownStage(LPDIRECT3DDEVICE9 pGraphicDev)
     :Engine::CScene(pGraphicDev)
@@ -68,6 +68,18 @@ _int CTownStage::Update_Scene(const _float& fTimeDelta)
 
 		FAILED_CHECK_RETURN(Engine::Set_Scene(pStage3), E_FAIL);
 		//pStage3->init(); // 맵툴에서 가져온 오브젝트들을 위해 사용   
+
+		return 0;
+	}
+
+	if (GetAsyncKeyState('H') & 0x8000)
+	{
+		Engine::CScene* pStage2 = CWorldHearStage::Create(m_pGraphicDev);
+		NULL_CHECK_RETURN(pStage2, -1);
+
+
+		FAILED_CHECK_RETURN(Engine::Set_Scene(pStage2), E_FAIL);
+		//pStage2->init(); // 맵툴에서 가져온 오브젝트들을 위해 사용 
 
 		return 0;
 	}
@@ -211,7 +223,7 @@ HRESULT CTownStage::Ready_Layer_GameLogic(const _tchar* pLayerTag)
 	pGameObject = CExpressMonkey::Create(m_pGraphicDev);
 	NULL_CHECK_RETURN(pGameObject, E_FAIL);
 	FAILED_CHECK_RETURN(pLayer->Add_GameObject(L"ExpressMonkey1", pGameObject), E_FAIL);
-	dynamic_cast<CExpressMonkey*>(pGameObject)->Set_Pos(_vec3{ 1100.f, 20.f, 451.f });
+	dynamic_cast<CExpressMonkey*>(pGameObject)->Set_Pos(_vec3{ 1100.f, 30.f, 451.f });
 	CManagement::GetInstance()->GetCurScenePtr()->Add_ObjectGroup(GROUP_TYPE::NPC, pGameObject);
 
 

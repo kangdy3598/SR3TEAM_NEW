@@ -7,7 +7,6 @@ CGameObject::CGameObject(LPDIRECT3DDEVICE9 pGraphicDevice)
 	, m_iObjType(0)
 	, m_bIsTransparent(false)
 	, m_bDontDestroy(false)
-	, m_activation(true)
 {
 	m_pGraphicDev->AddRef();
 }
@@ -17,7 +16,6 @@ CGameObject::CGameObject(const CGameObject& rhs)
 	, m_strKey(L"")
 	, m_bIsTransparent(false)
 	, m_bDontDestroy(false)
-	, m_activation(true)
 {
 	m_pGraphicDev->AddRef();
 }

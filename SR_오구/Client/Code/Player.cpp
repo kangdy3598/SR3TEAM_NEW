@@ -48,13 +48,13 @@ HRESULT CPlayer::Ready_GameObject()
     FAILED_CHECK_RETURN(Add_Component(), E_FAIL);
 
     //민지 임시 코드
-    m_tPlayerHP.iCurHP = 5;
+    m_tPlayerHP.iCurHP = 1;
     m_tPlayerHP.iMaxHP = 6;
     m_eTag = TAG_PLAYER;
     m_pTransformCom->m_vScale = { 20.f,20.f,20.f };
     m_pTransformCom->Set_Pos(200.f, 30.f, 500.f);
 
-
+    m_pStateControlCom->ChangeState(PlayerIdle::GetInstance(), this);
 
 
     D3DLIGHT9		tLightInfo;
@@ -65,16 +65,13 @@ HRESULT CPlayer::Ready_GameObject()
     //m_pGraphicDev->SetLight(0, &tLightInfo);    
     //m_pGraphicDev->LightEnable(0, TRUE);    
 
-
+   
 
     return S_OK;
 }
 
 void CPlayer::LateReady_GameObject()
 {
-    m_pStateControlCom->ChangeState(PlayerIdle::GetInstance(), this);
-    m_bNextStage = false;
-
     Engine::CGameObject::LateReady_GameObject();
 
     m_pQuestUI = dynamic_cast<CQuestUI*>(Engine::Get_GameObject(L"Layer_UI", L"Quest_UI"));
@@ -149,32 +146,32 @@ void CPlayer::Render_GameObject()
     m_pGraphicDev->SetRenderState(D3DRS_CULLMODE, D3DCULL_NONE);
 
 
-    //조명작업
+    ////조명작업
     D3DLIGHT9 tLightInfo;
     ZeroMemory(&tLightInfo, sizeof(D3DLIGHT9)); // 구조체 초기화
-
+    
     tLightInfo.Type = D3DLIGHT_SPOT; // 점 조명 타입 설정  
-
+    
     // 조명 색상 설정
     tLightInfo.Diffuse = { 1.f, 1.f, 1.f, 1.f }; // 확산 색상 (흰색)
     tLightInfo.Specular = { 1.f, 1.f, 1.f, 1.f }; // 반사 색상 (흰색)
     tLightInfo.Ambient = { 1.0f, 1.0f, 1.0f, 1.f }; // 주위 색상 (어두운 회색)
-
-
+    
+    
     _vec3 vPos;
-    m_pTransformCom->Get_Info(INFO_POS, &vPos);
-
+    m_pTransformCom->Get_Info(INFO_POS, &vPos); 
+    
     // 조명 위치 설정
     tLightInfo.Position = { vPos.x, vPos.y, vPos.z }; // 조명 위치 (x, y, z)
-
+    
     //아래 방향
-
+    
     //_vec3 vDir = { GetPlayerDirVector2().x, 0.0f, GetPlayerDirVector2().z };  
-    _vec3 vDir = { 0.f,-1.f,0.f };
-    tLightInfo.Direction = vDir;
-
-
-
+    _vec3 vDir = { 0.f,-1.f,0.f };  
+    tLightInfo.Direction = vDir;    
+    
+    
+    
     // 조명 범위 및 감쇠 설정
     tLightInfo.Range = 100.0f; // 조명이 도달할 수 있는 최대 거리
     tLightInfo.Falloff = 1.0f; // 감쇠 비율
@@ -183,12 +180,12 @@ void CPlayer::Render_GameObject()
     tLightInfo.Attenuation2 = 0.0f; // 거리 제곱 감쇠 계수
     tLightInfo.Theta = D3DXToRadian(150.0f);
     tLightInfo.Phi = D3DXToRadian(180.0f);
-
+    
     // 조명 정보 설정
     m_pGraphicDev->SetLight(0, &tLightInfo); // 조명 인덱스 0에 조명 정보 설정  
     m_pGraphicDev->LightEnable(0, TRUE); // 조명 인덱스 0의 조명 활성화    
-
-    //테스트
+    //
+    ////테스트
 
 
     if (m_bIsDiagonal)
@@ -205,14 +202,14 @@ void CPlayer::Render_GameObject()
 
     //9월 25일 충돌관련
     if (!m_bInvincible)
-        //m_pBoundBox->Render_Buffer();
+        m_pBoundBox->Render_Buffer();
 
 
 
-        m_pGraphicDev->SetRenderState(D3DRS_LIGHTING, FALSE);
+    m_pGraphicDev->SetRenderState(D3DRS_LIGHTING, FALSE);
     m_pGraphicDev->SetRenderState(D3DRS_CULLMODE, D3DCULL_CCW);  // 이거 설정안해주면 안됨 전역적으로 장치세팅이 저장되기 때문에
     m_pGraphicDev->SetTexture(0, NULL);  // 이거 설정안해주면 그대로 텍스처 나옴 이것도 마찬가지로 전역적으로 장치세팅이 되므로
-
+        
 }
 
 void CPlayer::OnCollisionEnter(CGameObject* _pOther)
@@ -227,15 +224,22 @@ void CPlayer::OnCollisionEnter(CGameObject* _pOther)
             )->Get_Info(INFO_POS, &m_vColliderPos);
     }
 
-
+    
     if (_pOther->IncludingType(OBJ_TYPE::HURT_ABLE))
     {
-
-        if (m_bInvincible || !dynamic_cast<CGameObject*>(_pOther)->GetActivation())
-            return;
+        
+        if (m_bInvincible || !dynamic_cast<CMonster*>(_pOther)->GetActivation())    
+            return; 
 
         m_pStateControlCom->ChangeState(PlayerHurt::GetInstance(), this);
         //SetPlayerCurHP(-1);
+    }
+
+    if (_pOther->IncludingType(OBJ_TYPE::HURT_ABLE2))
+    {
+    //
+    //    m_pStateControlCom->ChangeState(PlayerHurt::GetInstance(), this);
+    //    SetPlayerCurHP(-1);
     }
 }
 
@@ -293,11 +297,6 @@ void CPlayer::SetPlayerDirection()
 void CPlayer::ChangePickUpState()
 {
     m_pStateControlCom->ChangeState(PlayerPickUp::GetInstance(), this);
-}
-
-void CPlayer::ChangeBalloonFlyState()
-{
-    m_pStateControlCom->ChangeState(PlayerBalloonFly::GetInstance(), this);
 }
 
 void CPlayer::DurationInvincible(const _float& fTimeDelta)
@@ -371,14 +370,10 @@ void CPlayer::Key_Input(const _float& fTimeDelta)
     if (Engine::GetKeyDown(DIK_I))
     {
         m_bInven ^= TRUE;
-        if (m_bInven == FALSE)
+        if(m_bInven == FALSE)
             Engine::Play_Sound(L"SFX_68_UIBig_Close.wav", SOUND_EFFECT, 0.3);
-        else
-        {
-            Engine::Get_Layer(L"Layer_GameLogic")->SetGameState(GAMESTATE_UIOPEN);
+        else if(m_bInven == TRUE)
             Engine::Play_Sound(L"SFX_67_UIBig_Open.wav", SOUND_EFFECT, 0.3);
-        }
-
 
         m_bQuest = false;
     }
@@ -388,13 +383,19 @@ void CPlayer::Key_Input(const _float& fTimeDelta)
         m_bQuest ^= TRUE;
         if (m_bQuest == FALSE)
             Engine::Play_Sound(L"SFX_68_UIBig_Close.wav", SOUND_EFFECT, 0.3);
-        else
-        {
-            Engine::Get_Layer(L"Layer_GameLogic")->SetGameState(GAMESTATE_UIOPEN);
+        else if (m_bQuest == TRUE)
             Engine::Play_Sound(L"SFX_67_UIBig_Open.wav", SOUND_EFFECT, 0.3);
-        }
-
         m_bInven = false;
+    }
+
+    if (m_bInven || m_bQuest || m_bIsInteracting)
+    {
+        Engine::Get_Layer(L"Layer_GameLogic")->SetGameState(GAMESTATE_UIOPEN);
+        return;
+    }
+    else
+    {
+        Engine::Get_Layer(L"Layer_GameLogic")->SetGameState(GAMESTATE_NONE);
     }
     // 이 아래 추가 하삼 코드!!
 
@@ -518,6 +519,10 @@ void CPlayer::Key_Input(const _float& fTimeDelta)
         pItem->LateReady_GameObject();
         m_pInven->Add_Item(pItem);
 
+        pItem = dynamic_cast<CWaterToken*>(CWaterToken::Create(m_pGraphicDev));
+        NULL_CHECK_RETURN(pItem);
+        pItem->LateReady_GameObject();
+        m_pInven->Add_Item(pItem);
     }
 
     for (int i = 0; i < 4; i++)

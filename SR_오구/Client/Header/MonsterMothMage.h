@@ -30,7 +30,7 @@ public:
 
 	virtual HRESULT	Add_Component();
 	virtual	void	OnCollision(CGameObject* _pOther);
-
+	virtual	void	OnCollisionEnter(CGameObject* _pOther);
 	int testNum = 0;
 public:
 

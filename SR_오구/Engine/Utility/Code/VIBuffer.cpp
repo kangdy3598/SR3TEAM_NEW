@@ -2,25 +2,25 @@
 
 CVIBuffer::CVIBuffer()
 	:m_pVB(nullptr)
-	, m_pIB(nullptr)
-	, m_dwFVF(0)
-	, m_dwTriCnt(0)
-	, m_dwVtxCnt(0)
-	, m_dwVtxSize(0)
-	, m_dwIdxSize(0)
+	,m_pIB(nullptr)
+	,m_dwFVF(0)
+	,m_dwTriCnt(0)
+	,m_dwVtxCnt(0)
+	,m_dwVtxSize(0)
+	,m_dwIdxSize(0)
 {
 
 }
 
 CVIBuffer::CVIBuffer(LPDIRECT3DDEVICE9 pGraphicDev)
 	:CComponent(pGraphicDev)
-	, m_pVB(nullptr)
-	, m_pIB(nullptr)
-	, m_dwFVF(0)
-	, m_dwTriCnt(0)
-	, m_dwVtxCnt(0)
-	, m_dwVtxSize(0)
-	, m_dwIdxSize(0)
+	,m_pVB(nullptr)
+	,m_pIB(nullptr)
+	,m_dwFVF(0)
+	,m_dwTriCnt(0)
+	,m_dwVtxCnt(0)
+	,m_dwVtxSize(0)
+	,m_dwIdxSize(0)
 {
 
 }
@@ -48,20 +48,20 @@ HRESULT CVIBuffer::Ready_Buffer()
 {
 	// 버텍스 버퍼를 생성하는 함수 
 	FAILED_CHECK_RETURN(m_pGraphicDev->CreateVertexBuffer(m_dwVtxCnt * m_dwVtxSize, // 버텍스 버퍼의 크기
-		0,                      // 사용용도(0인 경우 정적 버퍼)
-		m_dwFVF,                // 버텍스의 속성 값 
-		D3DPOOL_MANAGED,
-		&m_pVB,
-		NULL),
-		E_FAIL);
+															0,                      // 사용용도(0인 경우 정적 버퍼)
+															m_dwFVF,                // 버텍스의 속성 값 
+															D3DPOOL_MANAGED,
+															&m_pVB,
+															NULL), 
+															E_FAIL);
 
 	FAILED_CHECK_RETURN(m_pGraphicDev->CreateIndexBuffer(m_dwTriCnt * m_dwIdxSize,
-		0,
-		m_IdxFmt,
-		D3DPOOL_MANAGED,
-		&m_pIB,
-		NULL),
-		E_FAIL);
+															0,
+															m_IdxFmt,
+															D3DPOOL_MANAGED,
+															&m_pIB,
+															NULL),
+															E_FAIL);
 
 
 	return S_OK;
@@ -76,7 +76,7 @@ void CVIBuffer::Render_Buffer()
 	//m_pGraphicDev->SetTexture(0, NULL); //텍스처 설정 없애는거 
 	//m_pGraphicDev->DrawPrimitive(D3DPT_TRIANGLELIST, 0, m_dwTriCnt);
 
-
+	
 	m_pGraphicDev->SetIndices(m_pIB);
 
 	//m_pGraphicDev->DrawIndexedPrimitive(D3DPT_TRIANGLELIST, 0, 0, 4, 0, 2);// 이게 한칸 그리는방식
@@ -105,22 +105,22 @@ void CVIBuffer::SetTextureScale(float fScaleSize)
 	m_pVB->Unlock();
 }
 
-void CVIBuffer::SetTexturePos(float fPosX, float fPosY)
+void CVIBuffer::SetTexturePos(float fPos)
 {
 	VTXTEX* pVertex = NULL;
 	m_pVB->Lock(0, 0, (void**)&pVertex, 0);
 
-	pVertex[0].vPosition.x += fPosX;
-	pVertex[0].vPosition.y += fPosY;
+	pVertex[0].vPosition.x += fPos;
+	pVertex[0].vPosition.y += fPos;
 
-	pVertex[1].vPosition.x += fPosX;
-	pVertex[1].vPosition.y += fPosY;
+	pVertex[1].vPosition.x += fPos;
+	pVertex[1].vPosition.y += fPos;
 
-	pVertex[2].vPosition.x += fPosX;
-	pVertex[2].vPosition.y += fPosY;
+	pVertex[2].vPosition.x += fPos;
+	pVertex[2].vPosition.y += fPos;
 
-	pVertex[3].vPosition.x += fPosX;
-	pVertex[3].vPosition.y += fPosY;
+	pVertex[3].vPosition.x += fPos;
+	pVertex[3].vPosition.y += fPos;
 
 	m_pVB->Unlock();
 }

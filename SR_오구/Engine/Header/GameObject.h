@@ -35,9 +35,6 @@ public:
 	virtual  void	  SetDontDestroy(_bool _bValue) { m_bDontDestroy = _bValue; }
 	virtual  _bool	  GetDontDestroy() { return m_bDontDestroy; }
 
-	virtual _bool	GetActivation() { return m_activation; }
-	virtual void    SetActivation(_bool _activation) { m_activation = _activation; }
-
 protected:
 	map<const _tchar*, CComponent*>    m_mapComponent[ID_END];
 	LPDIRECT3DDEVICE9				   m_pGraphicDev;
@@ -62,7 +59,6 @@ protected:
 	//0920 Seonhwan
 	wstring m_strTextureKey; // 게임오브젝트의 텍스처 키 
 	_bool m_bDontDestroy;
-	bool m_activation;
 
 	//0915 Seonhwan
 public:
@@ -83,15 +79,15 @@ public:
 public:
 	virtual void OnCollision(CGameObject* _pOther)
 	{
-
+		
 	}
 	virtual void OnCollisionEnter(CGameObject* _pOther)
 	{
-
+		
 	}
 	virtual void OnCollisionExit(CGameObject* _pOther)
-	{
-
+	{ 
+		
 	}
 };
 

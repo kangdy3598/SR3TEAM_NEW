@@ -373,7 +373,6 @@ void CDynamicCamera::ShakeMoveTrigger(const _float& fTimeDelta)
 void CDynamicCamera::WalkTo(_vec3 _vWalkPos, _float _fDuration, _vec3 _vDeparture)
 {
     m_bEventWalkTrigger = true;
-    Get_Layer(L"Layer_GameLogic")->SetGameState(GAMESTATE_EVENTSCENE);
 
     if (_vDeparture != _vec3(0, 0, 0))
     {
@@ -389,8 +388,6 @@ void CDynamicCamera::WalkTo(_vec3 _vWalkPos, _float _fDuration, _vec3 _vDepartur
 void CDynamicCamera::WalkTo2(_vec3 _vDestination, _float _fDuration, _vec3 _vDeparture)
 {
     m_bEventWalkTrigger = true;
-    Get_Layer(L"Layer_GameLogic")->SetGameState(GAMESTATE_EVENTSCENE);
-
     if (_vDestination == m_vPlayerPos)
         m_bReturn = true;
 
@@ -422,7 +419,6 @@ void CDynamicCamera::WalkToTrigger(const _float& fTimeDelta)
             m_bEventWalkTrigger = false;
             m_fEventWalkDeltaTime = 0.f;
             ResetWalkTo(0.f);
-            Get_Layer(L"Layer_GameLogic")->SetGameState(GAMESTATE_NONE);
         }
         return;
         // m_bEventWalkTrigger = false;
@@ -447,7 +443,6 @@ void CDynamicCamera::ResetWalkTo(_float _fDuration)
 
         m_bEventWalkTrigger = false;
         m_fEventWalkDeltaTime = 0.f;
-
     }
     else
     {

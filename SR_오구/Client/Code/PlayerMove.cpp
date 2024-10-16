@@ -50,7 +50,8 @@ void PlayerMove::Update(const _float& fTimeDelta)
         m_pStateController->ChangeState(PlayerRolling::GetInstance(), m_CGameObject);
 
     m_interactionObj = (dynamic_cast<CPlayer*>(m_CGameObject))->GetInteractingObj();
-    if (m_interactionObj && m_interactionObj->IncludingType(OBJ_TYPE::PUSH_ABLE))
+    if (m_interactionObj && m_interactionObj->IncludingType(OBJ_TYPE::PUSH_ABLE) &&
+        !(dynamic_cast<CPlayer*>(m_CGameObject))->IsPlayerDiagonal())
         m_pStateController->ChangeState(PlayerPush::GetInstance(), m_CGameObject);
 
     Key_Input(fTimeDelta);

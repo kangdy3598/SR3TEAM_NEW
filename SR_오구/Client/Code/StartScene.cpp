@@ -64,19 +64,19 @@ void CStartScene::Render_Scene()
 	// MapTool start
 	else if (GetAsyncKeyState('G') & 0x8000)
 	{
-		/*m_pMapEditor = CMapEditor::Create(m_pGraphicDev);
+		m_pMapEditor = CMapEditor::Create(m_pGraphicDev);
 		if (m_pMapEditor == nullptr)
 		{
 			MSG_BOX("m_pMapEditor NullPtr");
 		}
-		Set_Scene(m_pMapEditor);*/
+		Set_Scene(m_pMapEditor);
 
-		CJungleForestStage* m_pLogo = CJungleForestStage::Create(m_pGraphicDev);
-		if (m_pLogo == nullptr)
-		{
-			MSG_BOX("m_pLogo NullPtr");
-		}
-		Set_Scene(m_pLogo);
+		//CJungleForestStage* m_pLogo = CJungleForestStage::Create(m_pGraphicDev);
+		//if (m_pLogo == nullptr)
+		//{
+		//	MSG_BOX("m_pLogo NullPtr");
+		//}
+		//Set_Scene(m_pLogo);
 	}
 
 

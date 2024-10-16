@@ -84,6 +84,7 @@ void CFrontDoor::Match_Puzzle()
 {
 	m_bIsOpened = true;
 	m_fOpenTime = 0;
+	static_cast<CDynamicCamera*>(Engine::Get_GameObject(L"Layer_Environment", L"DynamicCamera"))->ShakeMove(4.f);
 }
 
 

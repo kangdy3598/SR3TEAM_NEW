@@ -167,11 +167,11 @@ HRESULT CMapEditor::Ready_Layer_Environment(const _tchar* pLayerTag)
 
 
 	//´Þ½£ ½ÅÀü¸Ê
-	//pGameObject = CMoonTempleMap::Create(m_pGraphicDev);	
-	//NULL_CHECK_RETURN(pGameObject, E_FAIL);	
-	//FAILED_CHECK_RETURN(pLayer->Add_GameObject(L"Map", pGameObject), E_FAIL);	
-	//pGameObject->SetObjectKey(L"Map");	
-	//pGameObject->SetTextureKey(L"Map");	
+	pGameObject = CMoonTempleMap::Create(m_pGraphicDev);	
+	NULL_CHECK_RETURN(pGameObject, E_FAIL);	
+	FAILED_CHECK_RETURN(pLayer->Add_GameObject(L"Map", pGameObject), E_FAIL);	
+	pGameObject->SetObjectKey(L"Map");	
+	pGameObject->SetTextureKey(L"Map");	
 
 
 	//¾Æ·¹³ª ¸Ê
@@ -182,11 +182,11 @@ HRESULT CMapEditor::Ready_Layer_Environment(const _tchar* pLayerTag)
 	//pGameObject->SetTextureKey(L"Map");	
 
 	//ÅÂ¾ç ½ÅÀü ¸Ê 
-	pGameObject = CSunTempleMap::Create(m_pGraphicDev);		
-	NULL_CHECK_RETURN(pGameObject, E_FAIL);		
-	FAILED_CHECK_RETURN(pLayer->Add_GameObject(L"Map", pGameObject), E_FAIL);		
-	pGameObject->SetObjectKey(L"Map");		
-	pGameObject->SetTextureKey(L"Map");	
+	//pGameObject = CSunTempleMap::Create(m_pGraphicDev);		
+	//NULL_CHECK_RETURN(pGameObject, E_FAIL);		
+	//FAILED_CHECK_RETURN(pLayer->Add_GameObject(L"Map", pGameObject), E_FAIL);		
+	//pGameObject->SetObjectKey(L"Map");		
+	//pGameObject->SetTextureKey(L"Map");	
 
 	// Ç×±¸ ¸Ê 
 	//pGameObject = CTown::Create(m_pGraphicDev);	

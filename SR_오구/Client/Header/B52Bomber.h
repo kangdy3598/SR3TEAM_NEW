@@ -53,6 +53,5 @@ protected:
 	CGameObject* m_CPlayer;
 
 private:
-
 	virtual void Free();
 };

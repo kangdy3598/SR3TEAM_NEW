@@ -70,7 +70,7 @@ void CCombinationStatue::OnCollision(CGameObject* _pOther)
 		m_bIsActivate = true;
 		m_iImageID++;
 		m_iImageID %= 3;
-		Play_Sound(L"SFX_22_StoneGateMove.wav", SOUND_EFFECT, 1.f);
+		Play_Sound(L"SFX_22_StoneGateMove.wav", SOUND_PUZZLE_SUB, 1.f);
 		static_cast<CCombinationPuzzle*>(m_pGroup)->Check_Matched();
 	}
 }

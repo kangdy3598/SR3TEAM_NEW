@@ -122,7 +122,7 @@ void CLightFlower::Match_Puzzle()
 		m_iImageID = 0;
 		m_iTargetID = 0;
 
-		Play_Sound(L"SFX_79_FlowerLightStandOff.wav", SOUND_EFFECT, 1.f);
+		Play_Sound(L"SFX_79_FlowerLightStandOff.wav", SOUND_PUZZLE_SUB, 1.f);
 		return;
 	}
 		
@@ -133,7 +133,7 @@ void CLightFlower::Match_Puzzle()
 		static_cast<CFlowerGlow*>(m_pGlow)->Set_ImageID(iIndex);
 		m_pGlow->Set_Active(true);		
 
-		Play_Sound(L"SFX_78_FlowerLightStandOn.wav", SOUND_EFFECT, 1.f);
+		Play_Sound(L"SFX_78_FlowerLightStandOn.wav", SOUND_PUZZLE_SUB, 1.f);
 	}		
 }
 

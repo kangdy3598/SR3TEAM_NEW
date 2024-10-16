@@ -63,7 +63,9 @@ _int CB52Bomber::Update_GameObject(const _float& fTimeDelta)
 	}
 
 	if (m_fTime > 1.f && !m_bIsCalled) {
-		Play_Sound(L"BombExplosion.wav", SOUND_SURROUNDING, 1.f);
+		Play_Sound(L"BombExplosion.wav", SOUND_PUZZLE_EXTRA, 1.f);
+
+		static_cast<CDynamicCamera*>(Engine::Get_GameObject(L"Layer_Environment", L"DynamicCamera"))->ShakeMove(1.f);
 		m_bIsActive = false;
 	}
 
@@ -136,7 +138,7 @@ void CB52Bomber::Key_Input(const _float& fTimeDelta)
 		m_fTime = 0.f;
 		m_fFireRate = 1.6f;
 
-		Play_Sound(L"B52_Sound.wav", SOUND_EFFECT, 1.f);		
+		Play_Sound(L"B52_Sound.wav", SOUND_PUZZLE_EXTRA, 1.f);
 	}
 }
 

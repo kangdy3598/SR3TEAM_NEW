@@ -69,7 +69,7 @@ void CColorStone::OnCollision(CGameObject* _pOther)
 			return;
 
 		if (m_pComStone == nullptr) {
-			Play_Sound(L"SFX_47_Jelly_Seperate.wav", SOUND_EFFECT, 1.f);
+			Play_Sound(L"SFX_47_Jelly_Seperate.wav", SOUND_PUZZLE_SUB, 1.f);
 			return;
 		}			
 
@@ -82,7 +82,7 @@ void CColorStone::OnCollision(CGameObject* _pOther)
 		m_pComStone->Set_Active(true);
 		m_pComStone = nullptr;
 
-		Play_Sound(L"SFX_47_Jelly_Seperate.wav", SOUND_EFFECT, 1.f);
+		Play_Sound(L"SFX_47_Jelly_Seperate.wav", SOUND_PUZZLE_SUB, 1.f);
 	}
 }
 
@@ -109,7 +109,7 @@ void CColorStone::OnCollisionEnter(CGameObject* _pOther)
 		_pOther->Set_Active(false);
 		m_pComStone = _pOther;
 
-		Play_Sound(L"SFX_45_Jelly_Combine.wav", SOUND_EFFECT, 1.f);
+		Play_Sound(L"SFX_45_Jelly_Combine.wav", SOUND_PUZZLE_SUB, 1.f);
 	}
 }
 

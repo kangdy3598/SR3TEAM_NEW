@@ -19,11 +19,12 @@ HRESULT CPlantOrb::Ready_GameObject()
 	m_pShadowTransformCom->m_vScale = { 8.f, 8.f, 0.f };
 	m_pShadowTransformCom->Rotation(ROT_X, 90.f * 3.14159265359f / 180.f);
 	m_eTag = TAG_ENEMY;
-	m_vecTexture.resize(4);	
+	m_vecTexture.resize(5);	
 	LoadTextureFromFile(m_pGraphicDev, "../Bin/Resource/Texture/puzzle/Plant_Bullet_Blue.png", &m_vecTexture[0]);
 	LoadTextureFromFile(m_pGraphicDev, "../Bin/Resource/Texture/puzzle/Plant_Bullet_Yellow.png", &m_vecTexture[1]);
 	LoadTextureFromFile(m_pGraphicDev, "../Bin/Resource/Texture/puzzle/Plant_Bullet_Red.png", &m_vecTexture[2]);	
 	LoadTextureFromFile(m_pGraphicDev, "../Bin/Resource/Texture/puzzle/Plant_Bullet_BlueRed.png", &m_vecTexture[3]);
+	LoadTextureFromFile(m_pGraphicDev, "../Bin/Resource/Texture/puzzle/Plant_Bullet_BlueRed.png", &m_vecTexture[4]);
 
 	return S_OK;
 }

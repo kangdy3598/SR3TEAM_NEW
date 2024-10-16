@@ -4,7 +4,7 @@
 #include "Export_Utility.h"
 
 CMonkeyStatue::CMonkeyStatue(LPDIRECT3DDEVICE9 pGraphicDev)
-	: Engine::CGameObject(pGraphicDev), m_bIsActivate(false)
+	: Engine::CGameObject(pGraphicDev), m_bIsActivate(false), m_fActiveTime(0)
 {
 }
 
@@ -29,6 +29,16 @@ _int CMonkeyStatue::Update_GameObject(const _float& fTimeDelta)
 {
 	Add_RenderGroup(RENDER_ALPHA, this);	
 	_int iExit = Engine::CGameObject::Update_GameObject(fTimeDelta);
+
+	if (m_bIsActivate) {
+		m_fActiveTime += fTimeDelta;
+
+		if (m_fActiveTime >= 1.f)
+		{
+			m_bIsActivate = false;
+			m_fActiveTime = 0;
+		}
+	}
 
 	return iExit;
 }

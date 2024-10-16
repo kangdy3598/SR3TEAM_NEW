@@ -226,6 +226,11 @@ HRESULT CTownStage::Ready_Layer_GameLogic(const _tchar* pLayerTag)
 	dynamic_cast<CExpressMonkey*>(pGameObject)->Set_Pos(_vec3{ 1100.f, 30.f, 451.f });
 	CManagement::GetInstance()->GetCurScenePtr()->Add_ObjectGroup(GROUP_TYPE::NPC, pGameObject);
 
+	pGameObject = CB52Bomber::Create(m_pGraphicDev);
+	NULL_CHECK_RETURN(pGameObject, E_FAIL);
+	FAILED_CHECK_RETURN(pLayer->Add_GameObject(L"CB52Bomber", pGameObject), E_FAIL);
+	static_cast<CB52Bomber*>(pGameObject)->Pre_CreateShell();
+
 
 	return S_OK;
 }

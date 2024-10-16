@@ -61,7 +61,8 @@ void CBugStatue::OnCollision(CGameObject* _pOther)
 	{
 		Active_StoneBlock();
 		m_bIsActivate = true;
-		Play_Sound(L"SFX_23_StoneGateLightOn.wav", SOUND_EFFECT, 1.f);
+		Play_Sound(L"SFX_23_StoneGateLightOn.wav", SOUND_PUZZLE_SUB, 1.f);
+		static_cast<CDynamicCamera*>(Engine::Get_GameObject(L"Layer_Environment", L"DynamicCamera"))->ShakeMove(.5f);
 	}
 }
 

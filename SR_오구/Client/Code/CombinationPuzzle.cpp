@@ -63,7 +63,7 @@ void CCombinationPuzzle::Check_Matched()
 	for (int i = 0; i < m_vecStoneBlocks.size(); ++i)
 	{
 		static_cast<CStoneBlock*>(m_vecStoneBlocks[i])->Move_StoneBlock();	
-		Play_Sound(L"SFX_168_GateOnceOff.wav", SOUND_EFFECT, 1.f);
+		Play_Sound(L"SFX_168_GateOnceOff.wav", SOUND_PUZZLE_MAIN, 1.f);
 	}
 }
 

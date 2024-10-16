@@ -50,7 +50,7 @@ public:
 	void  ZoomTo(_float fRatio, _float fDuration);
 	void  ResetZoom(_float fDuration);
 
-	void  ShakeMove(_float fDuration, _float fAmplitude = 0.1f, _float fFrequency = 20.f);
+	void  ShakeMove(_float fDuration, _float fAmplitude = 0.1f, _float fFrequency = 10.f);
 	// WalkPos방향으로 duration시간동안 이동합니다.
 	void  WalkTo(_vec3 _vWalkPos, _float _fDuration,
 		_vec3 _vDeparture = _vec3(0, 0, 0));

@@ -202,8 +202,7 @@ HRESULT CSunTempleStage::Ready_Layer_GameLogic(const _tchar* pLayerTag)
 	pGameObject = CB52Bomber::Create(m_pGraphicDev);
 	NULL_CHECK_RETURN(pGameObject, E_FAIL);
 	FAILED_CHECK_RETURN(pLayer->Add_GameObject(L"CB52Bomber", pGameObject), E_FAIL);
-	static_cast<CB52Bomber*>(pGameObject)->Pre_CreateShell();
-	//static_cast<CB52Bomber*>(pGameObject)->Set_Player(PlayerObj);
+	static_cast<CB52Bomber*>(pGameObject)->Pre_CreateShell();	
 
 
 #pragma region Bug Statue Puzzle

@@ -48,6 +48,7 @@ public:
 private:
 	_bool m_bIs;
 	_bool m_bIsActivate;
+	_float m_fActiveTime;	
 	vector<CGameObject*> m_vecStoneBlocks;	
 
 protected:

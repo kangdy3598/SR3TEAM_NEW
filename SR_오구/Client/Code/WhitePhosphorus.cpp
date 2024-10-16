@@ -1,5 +1,6 @@
 #include "pch.h"
 #include "WhitePhosphorus.h"
+#include "DynamicCamera.h"
 #include "Export_Utility.h"
 
 CWhitePhosphorus::CWhitePhosphorus(LPDIRECT3DDEVICE9 pGraphicDev)

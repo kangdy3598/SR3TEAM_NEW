@@ -84,22 +84,22 @@ void CNoteStatue::Play_Note()
 	switch (m_iNoteID)
 	{
 	case 0:
-		Play_Sound(L"SFX_674_MusicIceDrum1.wav", SOUND_EFFECT, 1.f);
+		Play_Sound(L"SFX_674_MusicIceDrum1.wav", SOUND_PUZZLE_SUB, 1.f);
 		break;
 	case 1:
-		Play_Sound(L"SFX_675_MusicIceDrum2.wav", SOUND_EFFECT, 1.f);
+		Play_Sound(L"SFX_675_MusicIceDrum2.wav", SOUND_PUZZLE_SUB, 1.f);
 		break;
 	case 2:
-		Play_Sound(L"SFX_676_MusicIceDrum3.wav", SOUND_EFFECT, 1.f);
+		Play_Sound(L"SFX_676_MusicIceDrum3.wav", SOUND_PUZZLE_SUB, 1.f);
 		break;
 	case 3:
-		Play_Sound(L"SFX_677_MusicIceDrum4.wav", SOUND_EFFECT, 1.f);
+		Play_Sound(L"SFX_677_MusicIceDrum4.wav", SOUND_PUZZLE_SUB, 1.f);
 		break;
 	case 4:
-		Play_Sound(L"SFX_678_MusicIceDrum5.wav", SOUND_EFFECT, 1.f);
+		Play_Sound(L"SFX_678_MusicIceDrum5.wav", SOUND_PUZZLE_SUB, 1.f);
 		break;
 	case 5:
-		Play_Sound(L"SFX_679_MusicIceDrum6.wav", SOUND_EFFECT, 1.f);
+		Play_Sound(L"SFX_679_MusicIceDrum6.wav", SOUND_PUZZLE_SUB, 1.f);
 		break;
 	default:
 		break;

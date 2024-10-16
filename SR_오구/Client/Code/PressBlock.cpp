@@ -114,7 +114,7 @@ void CPressBlock::OnCollisionEnter(CGameObject* _pOther)
 	m_iImageID++;
 	m_iImageID %= m_iMaxID;
 	m_bIsPressed = true;
-	Play_Sound(L"SFX_27_StonePressBlock_On.wav", SOUND_EFFECT, 1.f);
+	Play_Sound(L"SFX_27_StonePressBlock_On.wav", SOUND_PUZZLE_SUB, 1.f);
 
 	if (m_pGroup != nullptr)
 		static_cast<CCrystalPuzzle*>(m_pGroup)->Check_Matched();
@@ -126,7 +126,7 @@ void CPressBlock::OnCollisionExit(CGameObject* _pOther)
 		return;
 
 	m_bIsPressed = false;
-	Play_Sound(L"SFX_28_StonePressBlock_Off.wav", SOUND_SURROUNDING, 1.f);
+	Play_Sound(L"SFX_28_StonePressBlock_Off.wav", SOUND_PUZZLE_EXTRA, 1.f);
 }
 
 CPressBlock* CPressBlock::Create(LPDIRECT3DDEVICE9 pGraphicDev)

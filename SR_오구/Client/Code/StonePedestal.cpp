@@ -29,7 +29,7 @@ _int CStonePedestal::Update_GameObject(const _float& fTimeDelta)
 
 	_int iExit = Engine::CGameObject::Update_GameObject(fTimeDelta);
 	
-	if (m_pCollided != nullptr && m_fPullDuration < 2.f) {
+	if (m_pCollided != nullptr && m_fPullDuration < 1.f) {
 		m_fPullDuration += fTimeDelta;
 
 		_vec3 vPos, vMovePos, vTarget;

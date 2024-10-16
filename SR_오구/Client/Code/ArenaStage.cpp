@@ -171,6 +171,12 @@ HRESULT CArenaStage::Ready_Layer_GameLogic(const _tchar* pLayerTag)
     NULL_CHECK_RETURN(pGameObject, E_FAIL);
     FAILED_CHECK_RETURN(pLayer->Add_GameObject(L"AreanMap", pGameObject), E_FAIL);
 
+
+    pGameObject = CB52Bomber::Create(m_pGraphicDev);
+    NULL_CHECK_RETURN(pGameObject, E_FAIL);
+    FAILED_CHECK_RETURN(pLayer->Add_GameObject(L"CB52Bomber", pGameObject), E_FAIL);
+    static_cast<CB52Bomber*>(pGameObject)->Pre_CreateShell();
+
     //1006
     pGameObject = CRhino::Create(m_pGraphicDev);
     NULL_CHECK_RETURN(pGameObject, E_FAIL);

@@ -153,7 +153,7 @@ void CStoneBlock::Move_StoneBlockOnce()
 	m_iHoleImageID = 0;
 	m_fMoveTime = 0;
 
-	Play_Sound(L"SFX_168_GateOnceOff.wav", SOUND_EFFECT, 1.f);
+	Play_Sound(L"SFX_168_GateOnceOff.wav", SOUND_PUZZLE_MAIN, 1.f);
 }
 
 void CStoneBlock::Free()

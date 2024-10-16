@@ -89,8 +89,8 @@ void CBreakableStone::OnCollisionEnter(CGameObject* _pOther)
 
 		static_cast<CStone*>(_pOther)->Break();
 		m_iTargetID = 7;
-		Play_Sound(L"SFX_41_Catapult_StoneHit.wav", SOUND_EFFECT, 1.f);
-		Play_Sound(L"SFX_681_StoneBreakableDestroy.wav", SOUND_SURROUNDING, 1.f);
+		Play_Sound(L"SFX_41_Catapult_StoneHit.wav", SOUND_PUZZLE_SUB, 1.f);
+		Play_Sound(L"SFX_681_StoneBreakableDestroy.wav", SOUND_PUZZLE_MAIN, 1.f);
 	}
 }
 

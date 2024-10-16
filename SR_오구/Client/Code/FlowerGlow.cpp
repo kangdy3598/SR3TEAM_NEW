@@ -20,13 +20,13 @@ HRESULT CFlowerGlow::Ready_GameObject()
 	m_pTransformCom->m_vScale = { 100.f, 40.f, 100.f };
 	m_pTexTransformCom->m_vScale = { 100.f, 100.f, 0.f };
 	m_pTexTransformCom->Rotation(ROT_X, 90.f * 3.14159265359f / 180.f);
-	m_vecTexture.resize(6);
+	m_vecTexture.resize(6); 
 	LoadTextureFromFile(m_pGraphicDev, "../Bin/Resource/Texture/puzzle/Sprite_MoonForest_FlowerLightStandArea_Blue.png", &m_vecTexture[0]);
 	LoadTextureFromFile(m_pGraphicDev, "../Bin/Resource/Texture/puzzle/Sprite_MoonForest_FlowerLightStandArea_Yellow.png", &m_vecTexture[1]);
 	LoadTextureFromFile(m_pGraphicDev, "../Bin/Resource/Texture/puzzle/Sprite_MoonForest_FlowerLightStandArea_Red.png", &m_vecTexture[2]);	
-	LoadTextureFromFile(m_pGraphicDev, "../Bin/Resource/Texture/puzzle/Sprite_MoonForest_FlowerLightStandArea_BlueRed.png", &m_vecTexture[3]);
-	LoadTextureFromFile(m_pGraphicDev, "../Bin/Resource/Texture/puzzle/Sprite_MoonForest_FlowerLightStandArea_RedYellow.png", &m_vecTexture[4]);
-	LoadTextureFromFile(m_pGraphicDev, "../Bin/Resource/Texture/puzzle/Sprite_MoonForest_FlowerLightStandArea_YellowBlue.png", &m_vecTexture[5]);
+	LoadTextureFromFile(m_pGraphicDev, "../Bin/Resource/Texture/puzzle/Sprite_MoonForest_FlowerLightStandArea_YellowBlue.png", &m_vecTexture[3]);
+	LoadTextureFromFile(m_pGraphicDev, "../Bin/Resource/Texture/puzzle/Sprite_MoonForest_FlowerLightStandArea_BlueRed.png", &m_vecTexture[4]);
+	LoadTextureFromFile(m_pGraphicDev, "../Bin/Resource/Texture/puzzle/Sprite_MoonForest_FlowerLightStandArea_RedYellow.png", &m_vecTexture[5]);
 
 	return S_OK;
 }

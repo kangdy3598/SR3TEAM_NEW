@@ -124,6 +124,7 @@ void CPlayerInteractionBox::OnCollisionEnter(CGameObject* _pOther)
         )
         return;
 
+    //여기서 인터렉팅 오브젝트 추가하면 돌 밀 때 인터렉트 박스에 걸리면 밀림.
     m_CPlayer->SetInteractingObj(_pOther);
     if (_pOther->IncludingType(OBJ_TYPE::PUSH_ABLE) &&
         m_CPlayer->GetLiftObj() != _pOther)

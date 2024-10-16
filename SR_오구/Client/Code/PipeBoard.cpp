@@ -354,7 +354,7 @@ void CPipeBoard::Check_Connected(CGameObject* _pSender, _int _eID)
 	if (_pSender != m_pPipeBoardCom->m_pStatingPipe && obj->m_bIsFixed == true) {
 		obj->m_bIsConnected = true;
 		On_Connected(static_cast<CPipe*>(m_pPipeBoardCom->m_vecBoardGrid[_eID])->Get_PipeID());
-		Play_Sound(L"SFX_98_MazePuzzle_LineOn.wav", SOUND_EFFECT, 1.f);
+		Play_Sound(L"SFX_98_MazePuzzle_LineOn.wav", SOUND_PUZZLE_SUB, 1.f);
 		return;
 	}
 	
@@ -440,7 +440,7 @@ void CPipeBoard::Key_Input(const _float& fTimeDelta)
 		static_cast<Engine::CTransform*>(m_pPipeBoardCom->m_pCursor->Get_Component(ID_DYNAMIC, L"Com_Transform"))->Get_Info(INFO_POS, &vBasePos);
 		static_cast<Engine::CTransform*>(m_pPipeBoardCom->m_pCursor->Get_Component(ID_DYNAMIC, L"Com_Transform"))->Set_Pos(vBasePos.x, 0.61f, vBasePos.z + 24.5f);
 		m_pPipeBoardCom->m_iCursorID -= m_pPipeBoardCom->m_iGridSizeZ;
-		Play_Sound(L"SFX_546_JigsawPuzzlePiece_Move.wav", SOUND_EFFECT, 1.f);
+		Play_Sound(L"SFX_546_JigsawPuzzlePiece_Move.wav", SOUND_PUZZLE_SUB, 1.f);
 
 		if (m_pPipeBoardCom->m_pPickedPipe != nullptr)
 			static_cast<Engine::CTransform*>(m_pPipeBoardCom->m_pPickedPipe->Get_Component(ID_DYNAMIC, L"Com_Transform"))->Set_Pos(vBasePos.x, 0.6f, vBasePos.z + 24.5f);
@@ -456,7 +456,7 @@ void CPipeBoard::Key_Input(const _float& fTimeDelta)
 		static_cast<Engine::CTransform*>(m_pPipeBoardCom->m_pCursor->Get_Component(ID_DYNAMIC, L"Com_Transform"))->Get_Info(INFO_POS, &vBasePos);
 		static_cast<Engine::CTransform*>(m_pPipeBoardCom->m_pCursor->Get_Component(ID_DYNAMIC, L"Com_Transform"))->Set_Pos(vBasePos.x, 0.61f, vBasePos.z - 24.5f);
 		m_pPipeBoardCom->m_iCursorID += m_pPipeBoardCom->m_iGridSizeZ;
-		Play_Sound(L"SFX_546_JigsawPuzzlePiece_Move.wav", SOUND_EFFECT, 1.f);
+		Play_Sound(L"SFX_546_JigsawPuzzlePiece_Move.wav", SOUND_PUZZLE_SUB, 1.f);
 
 		if (m_pPipeBoardCom->m_pPickedPipe != nullptr)
 			static_cast<Engine::CTransform*>(m_pPipeBoardCom->m_pPickedPipe->Get_Component(ID_DYNAMIC, L"Com_Transform"))->Set_Pos(vBasePos.x, 0.6f, vBasePos.z - 24.5f);
@@ -471,7 +471,7 @@ void CPipeBoard::Key_Input(const _float& fTimeDelta)
 		static_cast<Engine::CTransform*>(m_pPipeBoardCom->m_pCursor->Get_Component(ID_DYNAMIC, L"Com_Transform"))->Get_Info(INFO_POS, &vBasePos);
 		static_cast<Engine::CTransform*>(m_pPipeBoardCom->m_pCursor->Get_Component(ID_DYNAMIC, L"Com_Transform"))->Set_Pos(vBasePos.x - 24.5f, 0.61f, vBasePos.z);
 		m_pPipeBoardCom->m_iCursorID--;
-		Play_Sound(L"SFX_546_JigsawPuzzlePiece_Move.wav", SOUND_EFFECT, 1.f);
+		Play_Sound(L"SFX_546_JigsawPuzzlePiece_Move.wav", SOUND_PUZZLE_SUB, 1.f);
 
 		if (m_pPipeBoardCom->m_pPickedPipe != nullptr) {			
 			static_cast<Engine::CTransform*>(m_pPipeBoardCom->m_pPickedPipe->Get_Component(ID_DYNAMIC, L"Com_Transform"))->Set_Pos(vBasePos.x - 24.5f, 0.6f, vBasePos.z);
@@ -487,7 +487,7 @@ void CPipeBoard::Key_Input(const _float& fTimeDelta)
 		static_cast<Engine::CTransform*>(m_pPipeBoardCom->m_pCursor->Get_Component(ID_DYNAMIC, L"Com_Transform"))->Get_Info(INFO_POS, &vBasePos);
 		static_cast<Engine::CTransform*>(m_pPipeBoardCom->m_pCursor->Get_Component(ID_DYNAMIC, L"Com_Transform"))->Set_Pos(vBasePos.x + 24.5f, 0.51f, vBasePos.z);
 		m_pPipeBoardCom->m_iCursorID++;
-		Play_Sound(L"SFX_546_JigsawPuzzlePiece_Move.wav", SOUND_EFFECT, 1.f);
+		Play_Sound(L"SFX_546_JigsawPuzzlePiece_Move.wav", SOUND_PUZZLE_SUB, 1.f);
 
 		if (m_pPipeBoardCom->m_pPickedPipe != nullptr)
 			static_cast<Engine::CTransform*>(m_pPipeBoardCom->m_pPickedPipe->Get_Component(ID_DYNAMIC, L"Com_Transform"))->Set_Pos(vBasePos.x + 24.5f, 0.6f, vBasePos.z);
@@ -500,7 +500,7 @@ void CPipeBoard::Key_Input(const _float& fTimeDelta)
 			m_pPipeBoardCom->m_pPickedPipe = m_pPipeBoardCom->m_vecBoardGrid[m_pPipeBoardCom->m_iCursorID - 1];
 			m_pPipeBoardCom->m_vecBoardGrid[m_pPipeBoardCom->m_iCursorID - 1] = nullptr;
 
-			Play_Sound(L"SFX_545_JigsawPuzzlePiece_PickUp.wav", SOUND_EFFECT, 1.f);
+			Play_Sound(L"SFX_545_JigsawPuzzlePiece_PickUp.wav", SOUND_PUZZLE_SUB, 1.f);
 
 			Reset_Connected();
 			Check_Connected(m_pPipeBoardCom->m_pStatingPipe, 31);
@@ -516,7 +516,7 @@ void CPipeBoard::Key_Input(const _float& fTimeDelta)
 			tr->Set_Pos(vPos.x, 0.5f, vPos.z);
 			m_pPipeBoardCom->m_pPickedPipe = nullptr;			
 
-			Play_Sound(L"SFX_547_JigsawPuzzlePiece_PickDown.wav", SOUND_EFFECT, 1.f);
+			Play_Sound(L"SFX_547_JigsawPuzzlePiece_PickDown.wav", SOUND_PUZZLE_SUB, 1.f);
 
 			Reset_Connected();
 			Check_Connected(m_pPipeBoardCom->m_pStatingPipe, 31);	

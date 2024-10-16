@@ -50,14 +50,14 @@ _int CWeightComparator::Update_GameObject(const _float& fTimeDelta)
 				m_iImageID++;
 
 			m_fTime = 0;
-			Play_Sound(L"SFX_119_MazePuzzlePieceAdd.wav", SOUND_EFFECT, 1.f);
+			Play_Sound(L"SFX_119_MazePuzzlePieceAdd.wav", SOUND_PUZZLE_SUB, 1.f);
 		}
 
 		if (m_iImageID == 3) {
 			for (int i = 0; i < m_vecStoneBlocks.size(); ++i)
 				static_cast<CStoneBlock*>(m_vecStoneBlocks[i])->Move_StoneBlock();
 			
-			Play_Sound(L"SFX_168_GateOnceOff.wav", SOUND_SURROUNDING, 1.f);
+			Play_Sound(L"SFX_168_GateOnceOff.wav", SOUND_PUZZLE_MAIN, 1.f);
 		}			
 	}
 
@@ -122,6 +122,8 @@ void CWeightComparator::Puzzle_Clear()
 
 	for (int i = 0; i < m_vecStones.size(); ++i)
 		static_cast<CStone*>(m_vecStones[i])->SetObjectType(NOTPASS_ABLE);
+
+
 }
 
 HRESULT CWeightComparator::Add_Component()

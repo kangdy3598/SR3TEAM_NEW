@@ -89,7 +89,7 @@ void CMusicStatue::OnCollisionExit(CGameObject* _pOther)
 
 void CMusicStatue::Play_Music()
 {
-	Play_Sound(L"SFX_676_MusicIceDrum_join.wav", SOUND_EFFECT, 1.f);
+	Play_Sound(L"SFX_676_MusicIceDrum_join.wav", SOUND_PUZZLE_MAIN, 1.f);
 }
 
 void CMusicStatue::Match_Note(_int _iNote)

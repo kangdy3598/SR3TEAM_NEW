@@ -6,6 +6,8 @@
 #include "Player.h"
 #include "ElectriceelBossMap.h"
 
+#include "B52Bomber.h"
+
 #include "DefaultUI.h"
 #include "InvenUI.h"
 #include "StoreUI.h"

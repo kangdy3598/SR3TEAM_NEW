@@ -189,5 +189,5 @@ void CScale::Match_Puzzle()
 	}		
 	
 	m_iTargetID = iTemp > iSour ? 0 : 12;
-	Play_Sound(L"SFX_77_StoneUnload.wav", SOUND_EFFECT, 1.f);
+	Play_Sound(L"SFX_77_StoneUnload.wav", SOUND_PUZZLE_SUB, 1.f);
 }

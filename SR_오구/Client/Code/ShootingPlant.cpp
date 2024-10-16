@@ -44,17 +44,17 @@ HRESULT CShootingPlant::Ready_GameObject()
 	LoadTextureFromFile(m_pGraphicDev, "../Bin/Resource/Texture/puzzle/ShootingPlant_Anim/Sprite_PlantCannon_Yellow_08.png", &m_vecAnim[1][8]);
 	LoadTextureFromFile(m_pGraphicDev, "../Bin/Resource/Texture/puzzle/ShootingPlant_Anim/Sprite_PlantCannon_Yellow_09.png", &m_vecAnim[1][9]);
 
-	m_vecAnim[3].resize(10);
-	LoadTextureFromFile(m_pGraphicDev, "../Bin/Resource/Texture/puzzle/ShootingPlant_Anim/Sprite_PlantCannon_Blue_00.png", &m_vecAnim[3][0]);
-	LoadTextureFromFile(m_pGraphicDev, "../Bin/Resource/Texture/puzzle/ShootingPlant_Anim/Sprite_PlantCannon_Blue_01.png", &m_vecAnim[3][1]);
-	LoadTextureFromFile(m_pGraphicDev, "../Bin/Resource/Texture/puzzle/ShootingPlant_Anim/Sprite_PlantCannon_Blue_02.png", &m_vecAnim[3][2]);
-	LoadTextureFromFile(m_pGraphicDev, "../Bin/Resource/Texture/puzzle/ShootingPlant_Anim/Sprite_PlantCannon_Blue_03.png", &m_vecAnim[3][3]);
-	LoadTextureFromFile(m_pGraphicDev, "../Bin/Resource/Texture/puzzle/ShootingPlant_Anim/Sprite_PlantCannon_Blue_04.png", &m_vecAnim[3][4]);
-	LoadTextureFromFile(m_pGraphicDev, "../Bin/Resource/Texture/puzzle/ShootingPlant_Anim/Sprite_PlantCannon_Blue_05.png", &m_vecAnim[3][5]);
-	LoadTextureFromFile(m_pGraphicDev, "../Bin/Resource/Texture/puzzle/ShootingPlant_Anim/Sprite_PlantCannon_Blue_06.png", &m_vecAnim[3][6]);
-	LoadTextureFromFile(m_pGraphicDev, "../Bin/Resource/Texture/puzzle/ShootingPlant_Anim/Sprite_PlantCannon_Blue_07.png", &m_vecAnim[3][7]);
-	LoadTextureFromFile(m_pGraphicDev, "../Bin/Resource/Texture/puzzle/ShootingPlant_Anim/Sprite_PlantCannon_Blue_08.png", &m_vecAnim[3][8]);
-	LoadTextureFromFile(m_pGraphicDev, "../Bin/Resource/Texture/puzzle/ShootingPlant_Anim/Sprite_PlantCannon_Blue_09.png", &m_vecAnim[3][9]);
+	m_vecAnim[4].resize(10);
+	LoadTextureFromFile(m_pGraphicDev, "../Bin/Resource/Texture/puzzle/ShootingPlant_Anim/Sprite_PlantCannon_Blue_00.png", &m_vecAnim[4][0]);
+	LoadTextureFromFile(m_pGraphicDev, "../Bin/Resource/Texture/puzzle/ShootingPlant_Anim/Sprite_PlantCannon_Blue_01.png", &m_vecAnim[4][1]);
+	LoadTextureFromFile(m_pGraphicDev, "../Bin/Resource/Texture/puzzle/ShootingPlant_Anim/Sprite_PlantCannon_Blue_02.png", &m_vecAnim[4][2]);
+	LoadTextureFromFile(m_pGraphicDev, "../Bin/Resource/Texture/puzzle/ShootingPlant_Anim/Sprite_PlantCannon_Blue_03.png", &m_vecAnim[4][3]);
+	LoadTextureFromFile(m_pGraphicDev, "../Bin/Resource/Texture/puzzle/ShootingPlant_Anim/Sprite_PlantCannon_Blue_04.png", &m_vecAnim[4][4]);
+	LoadTextureFromFile(m_pGraphicDev, "../Bin/Resource/Texture/puzzle/ShootingPlant_Anim/Sprite_PlantCannon_Blue_05.png", &m_vecAnim[4][5]);
+	LoadTextureFromFile(m_pGraphicDev, "../Bin/Resource/Texture/puzzle/ShootingPlant_Anim/Sprite_PlantCannon_Blue_06.png", &m_vecAnim[4][6]);
+	LoadTextureFromFile(m_pGraphicDev, "../Bin/Resource/Texture/puzzle/ShootingPlant_Anim/Sprite_PlantCannon_Blue_07.png", &m_vecAnim[4][7]);
+	LoadTextureFromFile(m_pGraphicDev, "../Bin/Resource/Texture/puzzle/ShootingPlant_Anim/Sprite_PlantCannon_Blue_08.png", &m_vecAnim[4][8]);
+	LoadTextureFromFile(m_pGraphicDev, "../Bin/Resource/Texture/puzzle/ShootingPlant_Anim/Sprite_PlantCannon_Blue_09.png", &m_vecAnim[4][9]);
 	return S_OK;
 }
 
@@ -203,7 +203,7 @@ void CShootingPlant::Shot()
 {
 	_vec3 vPos;
 	m_pTransformCom->Get_Info(INFO_POS, &vPos);	
-	Play_Sound(L"SFX_96_MonsterPlantCannon_Shoot.wav", SOUND_EFFECT, 1.f);
+	Play_Sound(L"SFX_96_MonsterPlantCannon_Shoot.wav", SOUND_PUZZLE_SUB, 1.f);
 
 	for (int i = 0; i < m_vecBullet.size(); ++i)
 	{
@@ -226,7 +226,7 @@ void CShootingPlant::Create_Bullet()
 	float tempX = m_bIsRight ? 1.f : -1.f;	
 	CGameObject* pOb = CPlantOrb::Create(m_pGraphicDev);
 	static_cast<CPlantOrb*>(pOb)->Init_Pos(vPos.x + tempX, vPos.z, tempX);
-	static_cast<CPlantOrb*>(pOb)->Set_Speed(m_bIsRight ? 35.f : -35.f);
+	static_cast<CPlantOrb*>(pOb)->Set_Speed(m_bIsRight ? 35.f : -35.f);	
 	static_cast<CPlantOrb*>(pOb)->Set_ImageID(m_iAnimID);
 	pOb->Set_Active(true);
 

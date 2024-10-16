@@ -59,7 +59,7 @@ void CCrystalPuzzle::Check_Matched()
 
 	for (auto& iter : m_vecCrystals) {
 		static_cast<CCrystal*>(iter)->Break();
-		Play_Sound(L"SFX_29_CrystalBreak.wav", SOUND_EFFECT, 1.f);
+		Play_Sound(L"SFX_29_CrystalBreak.wav", SOUND_PUZZLE_MAIN, 1.f);
 	}		
 	for (auto& iter : m_vecPressBlocks) {
 		static_cast<CPressBlock*>(iter)->Set_Clear(true);

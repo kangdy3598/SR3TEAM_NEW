@@ -194,6 +194,11 @@ HRESULT CElectriceelBossStage::Ready_Layer_GameLogic(const _tchar* pLayerTag)
     pGameObject->SetObjectKey(L"Stone0");
 
 
+    pGameObject = CB52Bomber::Create(m_pGraphicDev);
+    NULL_CHECK_RETURN(pGameObject, E_FAIL);
+    FAILED_CHECK_RETURN(pLayer->Add_GameObject(L"CB52Bomber", pGameObject), E_FAIL);
+    static_cast<CB52Bomber*>(pGameObject)->Pre_CreateShell();
+
     //pGameObject = CWaterFall::Create(m_pGraphicDev);    
     //NULL_CHECK_RETURN(pGameObject, E_FAIL);
     //FAILED_CHECK_RETURN(pLayer->Add_GameObject(L"WaterFall", pGameObject), E_FAIL);

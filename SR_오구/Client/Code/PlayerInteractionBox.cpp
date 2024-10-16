@@ -124,16 +124,16 @@ void CPlayerInteractionBox::OnCollisionEnter(CGameObject* _pOther)
         )
         return;
 
-    m_CPlayer->SetInteractingObj(_pOther);
-    switch (_pOther->GetObjectType())
-    {
-    case OBJ_TYPE::PUSH_ABLE:
+    //m_CPlayer->SetInteractingObj(_pOther);
+    //switch (_pOther->GetObjectType())
+    //{
+    //case OBJ_TYPE::PUSH_ABLE:
 
-        if (!m_CPlayer->IsPlayerDiagonal())
-            m_CPlayer->SetPushTrigger(true);
+    //    if (!m_CPlayer->IsPlayerDiagonal())
+    //        m_CPlayer->SetPushTrigger(true);
 
-        break;
-    }
+    //    break;
+    //}
 
     if(m_CPlayer->GetPlayerState() == PLAYERSTATE::PLY_SMASH)
     {

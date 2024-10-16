@@ -234,6 +234,7 @@ private:
 private:
 	Engine::CRcTex* m_pBufferCom;
 	Engine::CTransform* m_pTransformCom;
+	Engine::CTransform* m_pTexTransformCom;
 	Engine::CTexture* m_pTextureCom;
 	Engine::CAnimation* m_pAnimationCom;
 	CDynamicCamera* m_pCamera;

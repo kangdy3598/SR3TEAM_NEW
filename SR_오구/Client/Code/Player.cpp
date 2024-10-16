@@ -51,7 +51,9 @@ HRESULT CPlayer::Ready_GameObject()
     m_tPlayerHP.iCurHP = 1;
     m_tPlayerHP.iMaxHP = 6;
     m_eTag = TAG_PLAYER;
-    m_pTransformCom->m_vScale = { 20.f,20.f,20.f };
+    m_pTransformCom->m_vScale = { 18.f,18.f,8.f };
+    m_pTexTransformCom->m_vScale = { 20.f,20.f,20.f };
+    m_pTexTransformCom->Set_Pos(200.f, 30.f, 500.f);
     m_pTransformCom->Set_Pos(200.f, 30.f, 500.f);
 
     m_pStateControlCom->ChangeState(PlayerIdle::GetInstance(), this);
@@ -137,14 +139,20 @@ void CPlayer::LateUpdate_GameObject(const _float& fTimeDelta)
 
         Engine::CGameObject::LateUpdate_GameObject(fTimeDelta);
     }
+
+    _vec3 vPos;
+    m_pTransformCom->Get_Info(INFO_POS, &vPos);    
+    m_pTexTransformCom->Set_Pos(vPos.x, vPos.y, vPos.z - 12.f);
 }
 
 void CPlayer::Render_GameObject()
 {
     m_pGraphicDev->SetRenderState(D3DRS_LIGHTING, TRUE);
-    m_pGraphicDev->SetTransform(D3DTS_WORLD, m_pTransformCom->Get_WorldMatrix());
+    m_pGraphicDev->SetTransform(D3DTS_WORLD, m_pTexTransformCom->Get_WorldMatrix());
     m_pGraphicDev->SetRenderState(D3DRS_CULLMODE, D3DCULL_NONE);
 
+    if (!m_bInvincible)
+        m_pBoundBox->Render_Buffer();
 
     ////조명작업
     D3DLIGHT9 tLightInfo;
@@ -201,6 +209,8 @@ void CPlayer::Render_GameObject()
     m_equipHat->Render_GameObject();
 
     //9월 25일 충돌관련
+    m_pGraphicDev->SetTransform(D3DTS_WORLD, m_pTransformCom->Get_WorldMatrix());
+    m_pGraphicDev->SetRenderState(D3DRS_CULLMODE, D3DCULL_NONE);
     if (!m_bInvincible)
         m_pBoundBox->Render_Buffer();
 
@@ -214,6 +224,18 @@ void CPlayer::Render_GameObject()
 
 void CPlayer::OnCollisionEnter(CGameObject* _pOther)
 {
+    m_objInteracting = _pOther;
+    switch (_pOther->GetObjectType())
+    {
+    case OBJ_TYPE::PUSH_ABLE:
+
+        if (!m_bIsDiagonal)
+            m_bPushTrigger = true;
+
+        break;
+    }
+
+
     if (_pOther->IncludingType(OBJ_TYPE::NOTPASS_ABLE) &&
         m_objLiftObject != _pOther)
     {
@@ -256,6 +278,9 @@ void CPlayer::OnCollisionExit(CGameObject* _pOther)
         m_vColliderPos.y = 0.f;
         m_vColliderPos.z = 0.f;
     }
+
+    if (_pOther->IncludingType(OBJ_TYPE::PUSH_ABLE))
+        m_bPushTrigger = false;
 }
 
 void CPlayer::SetPlayerDirection()
@@ -350,6 +375,10 @@ HRESULT CPlayer::Add_Component()
     pComponent = m_pTransformCom = dynamic_cast<CTransform*>(Engine::Clone_Proto(L"Proto_Transform"));
     NULL_CHECK_RETURN(pComponent, E_FAIL);
     m_mapComponent[ID_DYNAMIC].insert({ L"Com_Transform", pComponent });
+
+    pComponent = m_pTexTransformCom = dynamic_cast<CTransform*>(Engine::Clone_Proto(L"Proto_Transform"));
+    NULL_CHECK_RETURN(pComponent, E_FAIL);
+    m_mapComponent[ID_DYNAMIC].insert({ L"Com_TexTransform", pComponent });
 
     pComponent = m_pStateControlCom = dynamic_cast<CStateController*>(Engine::Clone_Proto(L"Proto_State"));
     NULL_CHECK_RETURN(pComponent, E_FAIL);

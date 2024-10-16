@@ -40,8 +40,8 @@ _int CPlayerInteractionBox::Update_GameObject(const _float& fTimeDelta)
 
         _vec3 pos;
         m_playerTransform->Get_Info(INFO_POS, &pos);
-        pos.x += vPlayerDir.x * 15;
-        pos.z -= vPlayerDir.z * 15;
+        pos.x += vPlayerDir.x * 10;
+        pos.z -= vPlayerDir.z * 10;
         m_pTransformCom->m_vScale = { 5.f, 5.f, 5.f };
         m_pTransformCom->Set_Pos(pos);
     }
@@ -78,7 +78,7 @@ void CPlayerInteractionBox::Render_GameObject()
     m_pGraphicDev->SetTransform(D3DTS_WORLD, m_pTransformCom->Get_WorldMatrix());
     m_pGraphicDev->SetRenderState(D3DRS_CULLMODE, D3DCULL_NONE);
 
-    ////m_pBoundBox->Render_Buffer();
+    m_pBoundBox->Render_Buffer();
 
     m_pGraphicDev->SetRenderState(D3DRS_CULLMODE, D3DCULL_CCW);  // 이거 설정안해주면 안됨 전역적으로 장치세팅이 저장되기 때문에
     m_pGraphicDev->SetTexture(0, NULL);  // 이거 설정안해주면 그대로 텍스처 나옴 이것도 마찬가지로 전역적으로 장치세팅이 되므로
@@ -124,16 +124,13 @@ void CPlayerInteractionBox::OnCollisionEnter(CGameObject* _pOther)
         )
         return;
 
-    //m_CPlayer->SetInteractingObj(_pOther);
-    //switch (_pOther->GetObjectType())
-    //{
-    //case OBJ_TYPE::PUSH_ABLE:
-
-    //    if (!m_CPlayer->IsPlayerDiagonal())
-    //        m_CPlayer->SetPushTrigger(true);
-
-    //    break;
-    //}
+    m_CPlayer->SetInteractingObj(_pOther);
+    if (_pOther->IncludingType(OBJ_TYPE::PUSH_ABLE) &&
+        m_CPlayer->GetLiftObj() != _pOther)
+    {
+        if (!m_CPlayer->IsPlayerDiagonal())
+            m_CPlayer->SetPushTrigger(true);
+    }
 
     if(m_CPlayer->GetPlayerState() == PLAYERSTATE::PLY_SMASH)
     {

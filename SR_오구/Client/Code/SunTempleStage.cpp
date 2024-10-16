@@ -33,7 +33,7 @@ void CSunTempleStage::LateReady_Scene()
 
 	dynamic_cast<CTransform*>(
 		player->Get_Component(ID_DYNAMIC, L"Com_Transform")
-		)->Set_Pos(1030.f, 30.f, 180.f);
+		)->Set_Pos(1030.f, 16.f, 180.f);
 
 	CManagement::GetInstance()->GetCurScenePtr()->Add_ObjectGroup(GROUP_TYPE::PLAYER, player);
 	CManagement::GetInstance()->GetCurScenePtr()->Add_ObjectGroup(GROUP_TYPE::PLAYER, player->GetInteractionBox());

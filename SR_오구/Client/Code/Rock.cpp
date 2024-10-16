@@ -43,7 +43,7 @@ void CRock::Render_GameObject()
 	m_pGraphicDev->SetRenderState(D3DRS_CULLMODE, D3DCULL_NONE);
 	m_pTextureCom->Set_Texture();
 	m_pBufferCom->Render_Buffer();
-	////m_pBoundBox->Render_Buffer();
+	m_pBoundBox->Render_Buffer();
 	if (CManagement::GetInstance()->m_imap_stage == 2)
 	{
 		m_pGraphicDev->SetRenderState(D3DRS_LIGHTING, false);

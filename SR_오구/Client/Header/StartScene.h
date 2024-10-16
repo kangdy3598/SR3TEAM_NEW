@@ -33,7 +33,7 @@ public:
 private:
 	virtual void Free();
 
-	CLogo* m_pLogo;
+	//CLogo* m_pLogo;
 	CMapEditor* m_pMapEditor;
 	
 

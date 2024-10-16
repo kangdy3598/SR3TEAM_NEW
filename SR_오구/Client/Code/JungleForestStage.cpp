@@ -37,15 +37,15 @@ void CJungleForestStage::LateReady_Scene()
 
     dynamic_cast<CTransform*>(
         player->Get_Component(ID_DYNAMIC, L"Com_Transform")
-        )->Set_Pos(1400.f, 30.f, 300.f);
+        )->Set_Pos(1400.f, 16.f, 300.f);
 
     CManagement::GetInstance()->GetCurScenePtr()->Add_ObjectGroup(GROUP_TYPE::PLAYER, player);
     CManagement::GetInstance()->GetCurScenePtr()->Add_ObjectGroup(GROUP_TYPE::PLAYER, player->GetInteractionBox());
 
     Engine::CScene::LateReady_Scene();
 
-    player->GetCamera()->WalkTo2(_vec3(750.f, 30.f, 400.f)
-        , 5.f, _vec3(750.f, 30.f, 1900.f));
+    /*player->GetCamera()->WalkTo2(_vec3(750.f, 30.f, 400.f)
+        , 5.f, _vec3(750.f, 30.f, 1900.f));*/
 }
 
 _int CJungleForestStage::Update_Scene(const _float& fTimeDelta)

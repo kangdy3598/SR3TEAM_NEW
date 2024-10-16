@@ -51,13 +51,13 @@ HRESULT CPlayer::Ready_GameObject()
     m_tPlayerHP.iCurHP = 1;
     m_tPlayerHP.iMaxHP = 6;
     m_eTag = TAG_PLAYER;
-    m_pTransformCom->m_vScale = { 18.f,18.f,8.f };
+    m_pTransformCom->m_vScale = { 10.f,18.f,8.f };
+    m_pTransformCom->Set_Pos(200.f, 16.f, 500.f);
+
     m_pTexTransformCom->m_vScale = { 20.f,20.f,20.f };
-    m_pTexTransformCom->Set_Pos(200.f, 30.f, 500.f);
-    m_pTransformCom->Set_Pos(200.f, 30.f, 500.f);
-
+    m_pTexTransformCom->Set_Pos(200.f, 16.f, 500.f);
+    
     m_pStateControlCom->ChangeState(PlayerIdle::GetInstance(), this);
-
 
     D3DLIGHT9		tLightInfo;
     ZeroMemory(&tLightInfo, sizeof(D3DLIGHT9));
@@ -142,7 +142,7 @@ void CPlayer::LateUpdate_GameObject(const _float& fTimeDelta)
 
     _vec3 vPos;
     m_pTransformCom->Get_Info(INFO_POS, &vPos);    
-    m_pTexTransformCom->Set_Pos(vPos.x, vPos.y, vPos.z - 12.f);
+    m_pTexTransformCom->Set_Pos(vPos);
 }
 
 void CPlayer::Render_GameObject()
@@ -151,8 +151,8 @@ void CPlayer::Render_GameObject()
     m_pGraphicDev->SetTransform(D3DTS_WORLD, m_pTexTransformCom->Get_WorldMatrix());
     m_pGraphicDev->SetRenderState(D3DRS_CULLMODE, D3DCULL_NONE);
 
-    if (!m_bInvincible)
-        m_pBoundBox->Render_Buffer();
+    /*if (!m_bInvincible)
+        m_pBoundBox->Render_Buffer();*/
 
     ////조명작업
     D3DLIGHT9 tLightInfo;
@@ -225,16 +225,13 @@ void CPlayer::Render_GameObject()
 void CPlayer::OnCollisionEnter(CGameObject* _pOther)
 {
     m_objInteracting = _pOther;
-    switch (_pOther->GetObjectType())
-    {
-    case OBJ_TYPE::PUSH_ABLE:
 
+    /*if (_pOther->IncludingType(OBJ_TYPE::PUSH_ABLE) &&
+        m_objLiftObject != _pOther)
+    {
         if (!m_bIsDiagonal)
             m_bPushTrigger = true;
-
-        break;
-    }
-
+    }*/
 
     if (_pOther->IncludingType(OBJ_TYPE::NOTPASS_ABLE) &&
         m_objLiftObject != _pOther)

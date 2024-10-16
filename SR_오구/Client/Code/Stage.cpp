@@ -32,7 +32,7 @@ HRESULT CStage::Ready_Scene()
 
 	dynamic_cast<CTransform*>(
 		player->Get_Component(ID_DYNAMIC, L"Com_Transform")
-		)->Set_Pos(110.f, 30.f, 200.f);
+		)->Set_Pos(110.f, 16.f, 200.f);
 
 	return S_OK;
 

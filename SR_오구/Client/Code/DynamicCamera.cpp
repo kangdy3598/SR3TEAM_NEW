@@ -107,24 +107,29 @@ void CDynamicCamera::LateUpdate_GameObject(const _float& fTimeDelta)
     // if (m_bShakeTrigger)
     m_playerTransform->Get_Info(INFO_POS, &m_vPlayerPos);
 
-    if (m_bMoveTrigger)
-        MoveToPlayer(fTimeDelta);
-    else if (!m_bEventWalkTrigger)
-        CheckMoveTrigger();
+    if (m_eCameraState == CAMERASTATE::DEBUG)
+        Mouse_Move(fTimeDelta);
+
     else
     {
-        WalkToTrigger(fTimeDelta);
+        if (m_bMoveTrigger)
+            MoveToPlayer(fTimeDelta);
+        else if (!m_bEventWalkTrigger)
+            CheckMoveTrigger();
+        else
+        {
+            WalkToTrigger(fTimeDelta);
+        }
+
+
+        /////////////////////////////////////////////
+
+        if (m_bZoomTrigger)
+            ZoomToTrigger(fTimeDelta);
+
+        if (m_bShakeTrigger)
+            ShakeMoveTrigger(fTimeDelta);
     }
-
-
-    /////////////////////////////////////////////
-
-    if (m_bZoomTrigger)
-        ZoomToTrigger(fTimeDelta);
-
-    if (m_bShakeTrigger)
-        ShakeMoveTrigger(fTimeDelta);
-
     //RayTransfer();
     CCamera::LateUpdate_GameObject(fTimeDelta);
 }
@@ -166,6 +171,11 @@ void CDynamicCamera::Free()
 ///////////////////////////////////////////////////////////////////////////
 void CDynamicCamera::Key_Input(const _float& fTimeDelta)
 {
+    if (Engine::GetKeyDown(DIK_F1))
+        m_eCameraState = CAMERASTATE::PLAYER;
+
+    if (Engine::GetKeyDown(DIK_F2))
+        m_eCameraState = CAMERASTATE::DEBUG;
 
 }
 

@@ -28,7 +28,7 @@ HRESULT CTownStage::Ready_Scene()
 
 void CTownStage::LateReady_Scene()
 {
-	_vec3 pos(965.f, 30.f, 120.f);
+	_vec3 pos(965.f, 16.f, 120.f);
 	CPlayer* player = dynamic_cast<CPlayer*>(
 		Get_GameObject(L"Layer_GameLogic", L"Player"));
 

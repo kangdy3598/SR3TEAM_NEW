@@ -43,6 +43,7 @@ void PlayerPush::Update(const _float& fTimeDelta)
 
 void PlayerPush::Exit()
 {
+    
 }
 
 void PlayerPush::Key_Input(const _float& fTimeDelta)
@@ -56,7 +57,7 @@ void PlayerPush::Key_Input(const _float& fTimeDelta)
     //vPlayerDir = (dynamic_cast<CPlayer*>(m_CGameObject))->GetPlayerDirVector();
 
 
-    if (Engine::GetKeyPress(::CONTROLKEY::PLY_UPKEY))
+    if (Engine::GetKeyPress(CONTROLKEY::PLY_UPKEY))
     {
 
         m_pTransformCom->Move_Pos(
@@ -65,16 +66,18 @@ void PlayerPush::Key_Input(const _float& fTimeDelta)
         if (colObj == nullptr)
             return;
 
-        dynamic_cast<CTransform*>(
-            colObj->Get_Component(ID_DYNAMIC, L"Com_Transform"))->Move_Pos(
-                D3DXVec3Normalize(&vLook, &vLook), fTimeDelta, m_fMoveSpeed);
-
+        if ((dynamic_cast<CPlayer*>(m_CGameObject))->GetPlayerDirVector2().z >= 0.9)
+        {
+            dynamic_cast<CTransform*>(
+                colObj->Get_Component(ID_DYNAMIC, L"Com_Transform"))->Move_Pos(
+                    D3DXVec3Normalize(&vLook, &vLook), fTimeDelta, m_fMoveSpeed);
+        }
         return;
 
     }
 
 
-    if (Engine::GetKeyPress(::CONTROLKEY::PLY_DOWNKEY))
+    if (Engine::GetKeyPress(CONTROLKEY::PLY_DOWNKEY))
     {
         m_pTransformCom->Move_Pos(D3DXVec3Normalize(
             &vLook, &vLook), fTimeDelta, -m_fMoveSpeed);
@@ -82,14 +85,17 @@ void PlayerPush::Key_Input(const _float& fTimeDelta)
         if (colObj == nullptr)
             return;
 
-        dynamic_cast<CTransform*>(
-            colObj->Get_Component(ID_DYNAMIC, L"Com_Transform"))->Move_Pos(
-                D3DXVec3Normalize(&vLook, &vLook), fTimeDelta, -m_fMoveSpeed);
+        if ((dynamic_cast<CPlayer*>(m_CGameObject))->GetPlayerDirVector2().z <= -0.9)
+        {
+            dynamic_cast<CTransform*>(
+                colObj->Get_Component(ID_DYNAMIC, L"Com_Transform"))->Move_Pos(
+                    D3DXVec3Normalize(&vLook, &vLook), fTimeDelta, -m_fMoveSpeed);
+        }
         return;
     }
 
 
-    if (Engine::GetKeyPress(::CONTROLKEY::PLY_LEFTKEY))
+    if (Engine::GetKeyPress(CONTROLKEY::PLY_LEFTKEY))
     {
         m_pTransformCom->Move_Pos(D3DXVec3Normalize(
             &vRight, &vRight), fTimeDelta, -m_fMoveSpeed);
@@ -97,15 +103,17 @@ void PlayerPush::Key_Input(const _float& fTimeDelta)
         if (colObj == nullptr)
             return;
 
-        dynamic_cast<CTransform*>(
-            colObj->Get_Component(ID_DYNAMIC, L"Com_Transform"))->Move_Pos(
-                D3DXVec3Normalize(&vRight, &vRight), fTimeDelta, -m_fMoveSpeed);
-
+        if ((dynamic_cast<CPlayer*>(m_CGameObject))->GetPlayerDirVector2().x <= -0.9)
+        {
+            dynamic_cast<CTransform*>(
+                colObj->Get_Component(ID_DYNAMIC, L"Com_Transform"))->Move_Pos(
+                    D3DXVec3Normalize(&vRight, &vRight), fTimeDelta, -m_fMoveSpeed);
+        }
         return;
     }
 
 
-    if (Engine::GetKeyPress(::CONTROLKEY::PLY_RIGHTKEY))
+    if (Engine::GetKeyPress(CONTROLKEY::PLY_RIGHTKEY))
     {
         m_pTransformCom->Move_Pos(D3DXVec3Normalize(
             &vRight, &vRight), fTimeDelta, m_fMoveSpeed);
@@ -113,10 +121,12 @@ void PlayerPush::Key_Input(const _float& fTimeDelta)
         if (colObj == nullptr)
             return;
 
-        dynamic_cast<CTransform*>(
-            colObj->Get_Component(ID_DYNAMIC, L"Com_Transform"))->Move_Pos(
-                D3DXVec3Normalize(&vRight, &vRight), fTimeDelta, m_fMoveSpeed);
-
+        if ((dynamic_cast<CPlayer*>(m_CGameObject))->GetPlayerDirVector2().x >- 0.9)
+        {
+            dynamic_cast<CTransform*>(
+                colObj->Get_Component(ID_DYNAMIC, L"Com_Transform"))->Move_Pos(
+                    D3DXVec3Normalize(&vRight, &vRight), fTimeDelta, m_fMoveSpeed);
+        }
         return;
     }
 }

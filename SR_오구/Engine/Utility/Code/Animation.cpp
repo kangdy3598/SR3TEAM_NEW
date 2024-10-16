@@ -172,7 +172,7 @@ void CAnimation::SetAnimFrame(PLAYERSTATE _eObjState, bool _bDiagonal)
 {
 	currentFrame = 0;
 	m_eCurrentState = _eObjState;
-	if (_bDiagonal)
+	if (_bDiagonal && _eObjState != PLAYERSTATE::PLY_PUSH)
 		m_eCurrentState = static_cast<PLAYERSTATE>(_eObjState + 1);
 
 	m_currentFrameCount = m_vecFrameCount[m_eCurrentState];

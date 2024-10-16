@@ -27,6 +27,8 @@ void PlayerPush::Update(const _float& fTimeDelta)
         m_pStateController->ChangeState(PlayerIdle::GetInstance(), m_CGameObject);
     }
 
+    if((dynamic_cast<CPlayer*>(m_CGameObject))->IsPlayerDiagonal())
+        m_pStateController->ChangeState(PlayerMove::GetInstance(), m_CGameObject);
 
     if (!(dynamic_cast<CPlayer*>(m_CGameObject))->GetInteractingObj())
         m_pStateController->ChangeState(PlayerIdle::GetInstance(), m_CGameObject);
@@ -43,7 +45,7 @@ void PlayerPush::Update(const _float& fTimeDelta)
 
 void PlayerPush::Exit()
 {
-    
+    (dynamic_cast<CPlayer*>(m_CGameObject))->SetInteractingObj(nullptr);
 }
 
 void PlayerPush::Key_Input(const _float& fTimeDelta)
@@ -59,7 +61,7 @@ void PlayerPush::Key_Input(const _float& fTimeDelta)
 
     if (Engine::GetKeyPress(CONTROLKEY::PLY_UPKEY))
     {
-
+        
         m_pTransformCom->Move_Pos(
             D3DXVec3Normalize(&vLook, &vLook), fTimeDelta, m_fMoveSpeed);
 

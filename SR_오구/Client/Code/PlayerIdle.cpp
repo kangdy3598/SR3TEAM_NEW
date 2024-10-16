@@ -20,7 +20,7 @@ void PlayerIdle::Enter()
     m_fIdleDuration = 0.f;
     m_fDanceKeyDownTimer = 0.f;
 
-    m_interactionObj = (dynamic_cast<CPlayer*>(m_CGameObject))->GetInteractingObj();
+    
 
 }
 
@@ -35,6 +35,7 @@ void PlayerIdle::Update(const _float& fTimeDelta)
     }
 
     // Move, Dash, Push
+    m_interactionObj = (dynamic_cast<CPlayer*>(m_CGameObject))->GetInteractingObj();
     if (Engine::GetKeyPress(CONTROLKEY::PLY_UPKEY) ||
         Engine::GetKeyPress(CONTROLKEY::PLY_DOWNKEY) ||
         Engine::GetKeyPress(CONTROLKEY::PLY_LEFTKEY) ||

@@ -128,6 +128,7 @@ void CMusicStatue::Clear_Puzzle()
 		static_cast<CStoneBlock*>(m_vecStoneBlocks[i])->Move_StoneBlock();
 	}
 
+	Play_Sound(L"SFX_168_GateOnceOff.wav", SOUND_PUZZLE_EXTRA, 1.f);
 	m_bIsClear = true;
 }
 

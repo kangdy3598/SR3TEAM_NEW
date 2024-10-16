@@ -1355,7 +1355,7 @@ HRESULT CMoonTempleStage::Ready_Layer_GameLogic(const _tchar* pLayerTag)
 #pragma region Music Room
 
 	fOffsetX = 1580.f;
-	fOffsetZ = 150.f;
+	fOffsetZ = 180.f;
 
 	pGameObject = CMusicStatue::Create(m_pGraphicDev);
 	NULL_CHECK_RETURN(pGameObject, E_FAIL);

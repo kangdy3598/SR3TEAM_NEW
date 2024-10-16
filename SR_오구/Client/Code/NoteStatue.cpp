@@ -73,10 +73,7 @@ void CNoteStatue::OnCollisionEnter(CGameObject* _pOther)
 
 void CNoteStatue::OnCollisionExit(CGameObject* _pOther)
 {
-	if (_pOther->GetObjectKey() != L"PlayerInteractionBox")
-		return;
-
-	m_bIsActivate = false;
+		
 }
 
 void CNoteStatue::Play_Note()

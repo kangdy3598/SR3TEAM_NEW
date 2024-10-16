@@ -236,6 +236,11 @@ void CRhino::OnCollision(CGameObject* _pOther)
         m_pPlayer->IsInvincible();
     }
 
+    if (_pOther->Get_Tag() == TAG_PLAYERATTACK)
+    {
+        Set_CurHP(-10);
+    }
+
     return;
 }
 

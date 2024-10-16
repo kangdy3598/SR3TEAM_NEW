@@ -76,7 +76,7 @@ void CFlowerGlow::OnCollision(CGameObject* _pOther)
 		if (static_cast<CPlantOrb*>(_pOther)->Get_ImageID() != m_iImageID)
 			return;
 
-		_pOther->Set_Active(false);
+		static_cast<CPlantOrb*>(_pOther)->Set_TargetID(9);
 		static_cast<CPlantOrb*>(_pOther)->Set_Duration();
 	}
 }

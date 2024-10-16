@@ -31,7 +31,7 @@ public:
 public:
 	void  SetMothMage(CMonster* _monster) { m_pMothMage = _monster; }
 	void  SetTextureCom(CTexture* _textureCom)
-	{ 
+	{
 		m_pTextureCom = _textureCom;
 		m_mapComponent[ID_DYNAMIC].insert({ L"Com_Texture", m_pTextureCom });
 	}

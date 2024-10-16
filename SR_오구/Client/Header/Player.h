@@ -41,7 +41,7 @@
 #include "CookSmallFish.h"
 #include "CookMiddleFish.h"
 #include "CookBigFish.h"
-#include "WaterToken.h"
+
 #include "Branch.h"
 #include "Leaf.h"
 
@@ -159,7 +159,8 @@ public:
 	void			SetPassAble(_bool value) { m_bPassAble = value; }
 	// 플레이어 상태를 아이템 획득 모션으로 변경합니다.
 	void			ChangePickUpState();
-
+	// 플레이어 상태를 숭숭 익스프레스 모션으로 변경합니다.
+	void			ChangeBalloonFlyState();
 	// 플레이어 능력치 관련 //////////////////////////////////////////////////////
 	float			GetMoveSpeed() { return m_fMoveSpeed; }
 	void			SetMoveSpeed(float _fSpeed) { m_fMoveSpeed = _fSpeed; }
@@ -182,8 +183,8 @@ public:
 		m_tPlayerHP.iCurHP += _SetHP;
 		if (m_tPlayerHP.iCurHP > m_tPlayerHP.iMaxHP)
 			m_tPlayerHP.iCurHP = m_tPlayerHP.iMaxHP;
-		else if (m_tPlayerHP.iCurHP < 1)
-			m_tPlayerHP.iCurHP = 1;
+		else if (m_tPlayerHP.iCurHP < 0)
+			m_tPlayerHP.iCurHP = 0;
 	}
 	void			SetPlayerMaxHP(_int _SetHP)
 	{
@@ -212,7 +213,7 @@ public:
 	_vec3			GetColliderPos() { return m_vColliderPos; }
 	_vec3			GetColPlayerPos() { return m_vColPlayerPos; }
 	////////////////////////////////////////////////////////////////////////////
-	CDynamicCamera*	GetCamera() { return m_pCamera; }
+	CDynamicCamera* GetCamera() { return m_pCamera; }
 	void			SetCamera(CDynamicCamera* _camera) { m_pCamera = _camera; }
 
 	void			SetEquipHat(CEquipHat* _equipHat) { m_equipHat = _equipHat; }
@@ -289,7 +290,7 @@ private:
 	virtual void Free();
 
 
-//김선환 긴급해서 퍼블릭사용함 10월 11일
+	//김선환 긴급해서 퍼블릭사용함 10월 11일
 public:
 	bool  m_bSmashEnd;
 

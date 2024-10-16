@@ -39,13 +39,8 @@ void CMonsterMothMage::LateReady_GameObject()
 {
     Engine::CGameObject::LateReady_GameObject();
 
-    CTransform* PlayerTrasform = static_cast<Engine::CTransform*>(
-        m_CPlayer->Get_Component(ID_DYNAMIC, L"Com_Transform"));
-    _vec3 PlayerPos;
-    PlayerTrasform->Get_Info(INFO_POS, &PlayerPos);
-    PlayerPos.x -= 70 + (testNum * 30);
-    PlayerPos.z += 70;
-    m_pTransformCom->Set_Pos(PlayerPos);
+    m_CPlayer = dynamic_cast<CPlayer*>(
+        Engine::Get_GameObject(L"Layer_GameLogic", L"Player"));
 
     CGameObject* HPBar = CMonsterHPUI::Create(m_pGraphicDev);
     NULL_CHECK_RETURN(HPBar, );
@@ -58,7 +53,9 @@ void CMonsterMothMage::LateReady_GameObject()
     /////////////////////////////////////////////////////////////////////////////
     m_pMothMageOrb = CMonsterMothMageOrb::Create(m_pGraphicDev);
     NULL_CHECK_RETURN(m_pMothMageOrb, );
-    FAILED_CHECK_RETURN(m_pLayer->Add_GameObject(L"MonsterMothMageOrb", m_pMothMageOrb), );
+    objectName = new _tchar[32];
+    swprintf(objectName, 32, L"MonsterMothMageOrb%d", testNum);
+    FAILED_CHECK_RETURN(m_pLayer->Add_GameObject(objectName, m_pMothMageOrb), );
 
     (dynamic_cast<CMonsterMothMageOrb*>(m_pMothMageOrb))->SetMothMage(this);
     (dynamic_cast<CMonsterMothMageOrb*>(m_pMothMageOrb))->SetTextureCom(m_pTextureCom);
@@ -75,7 +72,10 @@ _int CMonsterMothMage::Update_GameObject(const _float& fTimeDelta)
     {
         if (m_tMonsterHP.iCurHP == 0)
         {
+            Engine::Play_Sound(L"SFX_92_MonsterMothMage_Death.wav", SOUND_EFFECT, 0.7);
+
             m_activation = false;
+            m_pMothMageOrb->SetActivation(false);
             CGameObject* pGameObject = CBranch::Create(m_pGraphicDev);
             NULL_CHECK_RETURN(pGameObject, E_FAIL);
 
@@ -181,8 +181,8 @@ void CMonsterMothMage::Render_GameObject()
 
     //m_pTextureCom->Set_Texture(MONSTER);
     //m_pAnimationCom->Render_Buffer();
-    //if (!m_bInvincible)
-    //    //m_pBoundBox->Render_Buffer();
+    if (!m_bInvincible)
+        m_pBoundBox->Render_Buffer();
 
     m_pGraphicDev->SetRenderState(D3DRS_CULLMODE, D3DCULL_CCW);  // 이거 설정안해주면 안됨 전역적으로 장치세팅이 저장되기 때문에
     m_pGraphicDev->SetTexture(0, NULL);  // 이거 설정안해주면 그대로 텍스처 나옴 이것도 마찬가지로 전역적으로 장치세팅이 되므로
@@ -204,13 +204,9 @@ void CMonsterMothMage::OnCollision(CGameObject* _pOther)
         m_bKnockBackTrigger = true;
         m_bInvincible = true;
         SetMonsterCurHP(-1);
-    }
-}
 
-void CMonsterMothMage::OnCollisionEnter(CGameObject* _pOther)
-{
-    if(_pOther->Get_Tag() == TAG_PLAYERATTACK)
-        SetMonsterCurHP(-1);
+        Engine::Play_Sound(L"SFX_92_MonsterMothMage_Hit.wav", SOUND_EFFECT, 0.7);
+    }
 }
 
 HRESULT CMonsterMothMage::Add_Component()
@@ -353,6 +349,8 @@ void CMonsterMothMage::AttackPlayer()
     }
     if (m_pAnimatorCom->GetAnimation()->GetCurrentFrm() == 4 && !m_bIsShot)
     {
+        Engine::Play_Sound(L"SFX_92_MonsterMothMage_Shoot.wav", SOUND_EFFECT, 0.7);
+
         m_bIsShot = true;
         bulletCount++;
         _tchar* objectName = new _tchar[32];

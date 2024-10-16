@@ -77,7 +77,7 @@ _int CStage::Update_Scene(const _float& fTimeDelta)
 		return 0;
 	}
 
-	if (GetAsyncKeyState('8') & 0x8000)
+	if (GetAsyncKeyState('7') & 0x8000)
 	{
 		Engine::CScene* pStage2 = CMoonTempleStage::Create(m_pGraphicDev);
 		NULL_CHECK_RETURN(pStage2, -1);

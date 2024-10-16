@@ -1,6 +1,8 @@
 #pragma once
 #include "TextBox.h"
 #include "QuestNPC.h"
+#include "MCRabbit.h"
+
 class CKnightDog : public CQuestNPC
 {
 private:
@@ -19,6 +21,9 @@ public:
 
 private:
 	HRESULT    Add_Component();
+
+private:
+	CMCRabbit* m_pRabbit;
 
 public:
 	static CKnightDog* Create(LPDIRECT3DDEVICE9 pGraphicDev);

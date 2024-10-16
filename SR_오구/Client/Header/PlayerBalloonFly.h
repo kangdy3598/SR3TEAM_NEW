@@ -28,7 +28,7 @@ public:
 	virtual void Exit();
 	virtual void Free() {}
 
-	
+
 private:
 	static PlayerBalloonFly* m_instance;
 	bool m_bTrigger = false;

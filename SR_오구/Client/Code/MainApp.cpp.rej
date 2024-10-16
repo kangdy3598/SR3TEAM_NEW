@@ -1,0 +1,9 @@
+diff a/09_12_FrameWork/Client/Code/MainApp.cpp b/09_12_FrameWork/Client/Code/MainApp.cpp	(rejected hunks)
+@@ -138,6 +138,7 @@
+ 	
+ 	//0922
+ 	FAILED_CHECK_RETURN(Engine::Ready_Font(*ppGraphicDev, L"Font_OguBold14", L"ī��24 �����", 14, 14, FW_NORMAL), E_FAIL);
++	FAILED_CHECK_RETURN(Engine::Ready_Font(*ppGraphicDev, L"Font_OguBold22", L"ī��24 �����", 22, 22, FW_NORMAL), E_FAIL);
+ 	FAILED_CHECK_RETURN(Engine::Ready_Font(*ppGraphicDev, L"Font_OguBold24", L"ī��24 �����", 24, 24, FW_NORMAL), E_FAIL);
+ 	FAILED_CHECK_RETURN(Engine::Ready_Font(*ppGraphicDev, L"Font_OguBold36", L"ī��24 �����", 36, 36, FW_NORMAL), E_FAIL);
+ 	FAILED_CHECK_RETURN(Engine::Ready_Font(*ppGraphicDev, L"Font_OguBold48", L"ī��24 �����", 48, 48, FW_NORMAL), E_FAIL);

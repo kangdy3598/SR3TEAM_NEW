@@ -1,0 +1,50 @@
+#pragma once
+#include "GameObject.h"
+#include "Export_System.h"
+#include "Export_Utility.h"
+
+BEGIN(Engine)
+
+class CRcTex;
+class CTexture;
+class CTransform;
+
+END
+
+class CInteractionButton : public Engine::CGameObject
+{
+private:
+	explicit CInteractionButton(LPDIRECT3DDEVICE9 pGraphicDev);
+	virtual ~CInteractionButton();
+
+public:
+	struct NPC_INFO
+	{
+		const _tchar* pName;
+		const _tchar* pContent; //대화 내용
+	};
+public:
+	virtual   HRESULT   Ready_GameObject();
+	virtual   _int      Update_GameObject(const _float& fTimeDelta);
+	virtual   void	    LateUpdate_GameObject(const _float& fTimeDelta);
+	virtual   void      Render_GameObject();
+
+	void	CallButton(_bool _bCall) { m_bCall = _bCall; }
+private:
+	HRESULT    Add_Component();
+
+private:
+	Engine::CRcTex* m_pBufferCom;
+	Engine::CTexture* m_pTextureCom;
+	Engine::CTransform* m_pTransformCom;
+
+	_bool m_bCall;
+
+public:
+	static CInteractionButton* Create(LPDIRECT3DDEVICE9 pGraphicDev);
+
+private:
+	virtual void Free();
+
+};
+

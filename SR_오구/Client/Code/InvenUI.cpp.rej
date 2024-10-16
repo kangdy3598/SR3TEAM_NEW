@@ -1,0 +1,9 @@
+diff a/09_12_FrameWork/Client/Code/InvenUI.cpp b/09_12_FrameWork/Client/Code/InvenUI.cpp	(rejected hunks)
+@@ -8,6 +8,7 @@
+     :Engine::CGameObject(pGraphicDev)
+     , m_bCursorCreate(false), m_pItemSelector(nullptr)
+ {
++    ZeroMemory(&m_vInvenPos, 0, sizeof(m_vInvenPos));
+ }
+ 
+ CInvenUI::~CInvenUI()

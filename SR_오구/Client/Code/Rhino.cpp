@@ -77,7 +77,7 @@ void CRhino::LateReady_GameObject()
 
     for (size_t i = 0; i < m_iStoneCnt; i++)
     {
-        _tchar StoneName[32] = L"CRhinoStone";
+        _tchar StoneName[32] = L"RhinoStone";
         _tchar StoneNum[32];
 
         swprintf(StoneNum, 32, L"%d", i + 1);

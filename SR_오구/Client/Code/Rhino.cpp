@@ -101,8 +101,6 @@ _int CRhino::Update_GameObject(const _float& fTimeDelta)
 
     if (m_tInfo.iCurHP <= 0)
     {
-        Engine::Play_Sound(L"Yell2.mp3", SOUND_EFFECT, 0.2f);
-
         m_activation = false;
         m_bCreate = false;
         m_pPlayer->Set_HonorScore(100);

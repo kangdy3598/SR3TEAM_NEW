@@ -19,7 +19,12 @@ public:
 	virtual   void	    LateUpdate_GameObject(const _float& fTimeDelta);
 	virtual   void      Render_GameObject();
 
-	void	  CallVictory() { m_bCall = true; m_fElapsedTime = 0; }
+	void	  CallVictory()
+	{
+		m_bCall = true;
+		m_fElapsedTime = 0;
+		Engine::Play_Sound(L"Yell2.mp3", SOUND_MOREEFFECT, 0.2f);
+	}
 
 private:
 	HRESULT    Add_Component();

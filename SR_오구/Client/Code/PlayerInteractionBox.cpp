@@ -137,8 +137,8 @@ void CPlayerInteractionBox::OnCollisionEnter(CGameObject* _pOther)
 
     if(m_CPlayer->GetPlayerState() == PLAYERSTATE::PLY_SMASH)
     {
-        //_vec3 test = m_CPlayer->GetPlayerDirVector2();
-        //dynamic_cast<CTransform*>(_pOther->Get_Component(ID_DYNAMIC, L"Com_Transform"))->Move_Pos(&test, CTimerMgr::GetInstance()->Get_TimeDelta(L"Timer_FPS60"), 100.f);
+        _vec3 test = m_CPlayer->GetPlayerDirVector2();
+        dynamic_cast<CTransform*>(_pOther->Get_Component(ID_DYNAMIC, L"Com_Transform"))->Move_Pos(&test, CTimerMgr::GetInstance()->Get_TimeDelta(L"Timer_FPS60"), 100.f);
     }
 }
 

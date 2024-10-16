@@ -42,9 +42,7 @@ _int CStage::Update_Scene(const _float& fTimeDelta)
 {
 	_int  iExit = Engine::CScene::Update_Scene(fTimeDelta);
 
-	CPlayer* player = dynamic_cast<CPlayer*>(
-		Get_GameObject(L"Layer_GameLogic", L"Player"));
-	if ((GetAsyncKeyState('M') & 0x8000) || player->IsNextSceneOn())
+	if (GetAsyncKeyState('M') & 0x8000)
 	{
 		Engine::CScene* pStage2 = CWorldHearStage::Create(m_pGraphicDev);	
 		NULL_CHECK_RETURN(pStage2, -1);
@@ -52,6 +50,17 @@ _int CStage::Update_Scene(const _float& fTimeDelta)
 
 		FAILED_CHECK_RETURN(Engine::Set_Scene(pStage2), E_FAIL);
 		//pStage2->init(); // 맵툴에서 가져온 오브젝트들을 위해 사용 
+
+		return 0;
+	}
+
+	if (GetAsyncKeyState('8') & 0x8000)
+	{
+		Engine::CScene* pStage3 = CTownStage::Create(m_pGraphicDev);
+		NULL_CHECK_RETURN(pStage3, -1);
+
+		FAILED_CHECK_RETURN(Engine::Set_Scene(pStage3), E_FAIL);
+		//pStage3->init(); // 맵툴에서 가져온 오브젝트들을 위해 사용   
 
 		return 0;
 	}

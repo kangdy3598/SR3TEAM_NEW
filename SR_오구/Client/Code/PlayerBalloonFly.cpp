@@ -18,20 +18,21 @@ void PlayerBalloonFly::Enter()
     else
     {
         (dynamic_cast<CPlayer*>(m_CGameObject))->SetPlayerState(PLAYERSTATE::PLY_BALLOONFLYDOWN);
-        _vec3 playerPos;
-        m_pTransformCom->Get_Info(INFO_POS, &playerPos);
-        playerPos.y = 100;
-        m_pTransformCom->Set_Pos(playerPos);
+        _vec3 playerpos;
+        m_pTransformCom->Get_Info(INFO_POS, &playerpos);
+        playerpos.y = 90;
     }
     (dynamic_cast<CPlayer*>(m_CGameObject))->FixCurPlayerDir(true);
     m_pAnimationCom->SetTextureScale(1.5f);
-    m_pAnimationCom->SetTexturePos(-0.15f, 0.15f);
+    m_pAnimationCom->SetTexturePos(1.f);
 }
 
 void PlayerBalloonFly::Update(const _float& fTimeDelta)
 {
     _vec3 up(0.f, 1.f, 0.f);
     _vec3 down(0.f, -1.f, 0.f);
+
+    
 
     if ((dynamic_cast<CPlayer*>(m_CGameObject))->GetPlayerState() ==
         PLAYERSTATE::PLY_BALLOONFLYUP)
@@ -49,7 +50,7 @@ void PlayerBalloonFly::Update(const _float& fTimeDelta)
             m_pTransformCom->Get_Info(INFO_POS, &playerPos);
             if (playerPos.y >= 100)
                 (dynamic_cast<CPlayer*>(m_CGameObject))->SetNextSceneOn();
-        }
+        }   
     }
 
     else
@@ -79,6 +80,5 @@ void PlayerBalloonFly::Update(const _float& fTimeDelta)
 void PlayerBalloonFly::Exit()
 {
     (dynamic_cast<CPlayer*>(m_CGameObject))->FixCurPlayerDir(false);
-
 }
 

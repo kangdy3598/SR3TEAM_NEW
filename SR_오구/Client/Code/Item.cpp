@@ -18,8 +18,6 @@ CItem::~CItem()
 
 HRESULT CItem::Ready_GameObject()
 {
-    m_bDontDestroy = true;
-
     FAILED_CHECK_RETURN(Add_Component(), E_FAIL);
 
     return S_OK;
@@ -83,7 +81,7 @@ _int CItem::Update_GameObject(const _float& fTimeDelta)
         m_pItemUI->Update_GameObject(fTimeDelta); // ½ºÅä¾î¿¡¼­ ÃÖÃÊ È¹µæ ¾µÀÏ¾øÀÜ..
     }
     if (!m_tInfo.bOnField)
-    { 
+    {
         Engine::Add_RenderGroup(RENDER_UI, this);
     }
     else if (m_tInfo.bOnField)
@@ -150,6 +148,13 @@ HRESULT CItem::Add_Component()
     m_mapComponent[ID_DYNAMIC].insert({ L"Com_TransformItemView", pComponent });
     m_pViewTransformCom->m_vScale = { 100.f, 100.f, 1.f };
     m_pViewTransformCom->m_vInfo[INFO_POS] = { 430.f, 100.f, 0.1f };
+
+    pComponent = m_pStoreTransformCom = dynamic_cast<CTransform*>(Engine::Clone_Proto(L"Proto_Transform"));
+    NULL_CHECK_RETURN(pComponent, E_FAIL);
+    m_mapComponent[ID_DYNAMIC].insert({ L"Com_TransformStore", pComponent });
+    m_pStoreTransformCom->m_vScale = { 55.f, 55.f, 1.f };
+    m_pStoreTransformCom->m_vInfo[INFO_POS] = { 430.f, 100.f, 0.1f };
+    
 
     pComponent = m_pPriceTextureCom = dynamic_cast<CTexture*>(Engine::Clone_Proto(L"Proto_PriceUI"));
     NULL_CHECK_RETURN(pComponent, E_FAIL);

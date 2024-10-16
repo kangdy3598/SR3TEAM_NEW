@@ -9,12 +9,6 @@ void PlayerIdle::Enter()
     if (!m_pStateController)
         SetComponent();
 
-    if ((dynamic_cast<CPlayer*>(m_CGameObject))->GetPlayerState() ==
-        PLAYERSTATE::PLY_BALLOONFLYUP)
-    {
-        m_pStateController->ChangeState(PlayerBalloonFly::GetInstance(), m_CGameObject);
-        return;
-    }
     (dynamic_cast<CPlayer*>(m_CGameObject))->SetPlayerState(PLAYERSTATE::PLY_IDLE);
 
     m_fIdleDuration = 0.f;

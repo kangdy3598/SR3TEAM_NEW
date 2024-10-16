@@ -48,13 +48,13 @@ HRESULT CPlayer::Ready_GameObject()
     FAILED_CHECK_RETURN(Add_Component(), E_FAIL);
 
     //민지 임시 코드
-    m_tPlayerHP.iCurHP = 5;
+    m_tPlayerHP.iCurHP = 1;
     m_tPlayerHP.iMaxHP = 6;
     m_eTag = TAG_PLAYER;
     m_pTransformCom->m_vScale = { 20.f,20.f,20.f };
     m_pTransformCom->Set_Pos(200.f, 30.f, 500.f);
 
-    //m_pStateControlCom->ChangeState(PlayerIdle::GetInstance(), this);
+    m_pStateControlCom->ChangeState(PlayerIdle::GetInstance(), this);
 
 
     D3DLIGHT9		tLightInfo;
@@ -72,9 +72,6 @@ HRESULT CPlayer::Ready_GameObject()
 
 void CPlayer::LateReady_GameObject()
 {
-    m_pStateControlCom->ChangeState(PlayerIdle::GetInstance(), this);
-    m_bNextStage = false;
-
     Engine::CGameObject::LateReady_GameObject();
 
     m_pQuestUI = dynamic_cast<CQuestUI*>(Engine::Get_GameObject(L"Layer_UI", L"Quest_UI"));
@@ -240,9 +237,9 @@ void CPlayer::OnCollisionEnter(CGameObject* _pOther)
 
     if (_pOther->IncludingType(OBJ_TYPE::HURT_ABLE2))
     {
-    
-        m_pStateControlCom->ChangeState(PlayerHurt::GetInstance(), this);
-        SetPlayerCurHP(-1);
+    //
+    //    m_pStateControlCom->ChangeState(PlayerHurt::GetInstance(), this);
+    //    SetPlayerCurHP(-1);
     }
 }
 
@@ -362,11 +359,6 @@ HRESULT CPlayer::Add_Component()
     NULL_CHECK_RETURN(pComponent, E_FAIL);
     m_pBoundBox->SetGameObjectPtr(this);
     m_mapComponent[ID_DYNAMIC].insert({ L"Com_Collider", pComponent });
-
-    pComponent = m_pColTransform = dynamic_cast<CTransform*>(Engine::Clone_Proto(L"Proto_Transform"));
-    NULL_CHECK_RETURN(pComponent, E_FAIL);
-    m_pBoundBox->SetGameObjectPtr(this);
-    m_mapComponent[ID_DYNAMIC].insert({ L"Com_ColTransform", pComponent });
 }
 
 void CPlayer::Key_Input(const _float& fTimeDelta)
@@ -527,6 +519,10 @@ void CPlayer::Key_Input(const _float& fTimeDelta)
         pItem->LateReady_GameObject();
         m_pInven->Add_Item(pItem);
 
+        pItem = dynamic_cast<CWaterToken*>(CWaterToken::Create(m_pGraphicDev));
+        NULL_CHECK_RETURN(pItem);
+        pItem->LateReady_GameObject();
+        m_pInven->Add_Item(pItem);
     }
 
     for (int i = 0; i < 4; i++)

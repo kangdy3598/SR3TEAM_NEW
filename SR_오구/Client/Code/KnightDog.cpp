@@ -29,8 +29,6 @@ HRESULT CKnightDog::Ready_GameObject()
 void CKnightDog::LateReady_GameObject()
 {
     CQuestNPC::LateReady_GameObject();
-    m_pRabbit = dynamic_cast<CMCRabbit*>(Engine::Get_GameObject(L"Layer_GameLogic", L"NPCRabbit"));
-    NULL_CHECK_RETURN(m_pRabbit);
 }
 
 _int CKnightDog::Update_GameObject(const _float& fTimeDelta)
@@ -73,7 +71,6 @@ void CKnightDog::OnCollision(CGameObject* _pOther)
 
             m_pTextBox->Set_Text(m_tInfo); //대화창 텍스트 세팅
             m_pTextBox->CallTextBox(true); //대화창 호출
-            m_pRabbit->Set_Monster(CMCRabbit::MOTH_MAGE);
         }
     }
 

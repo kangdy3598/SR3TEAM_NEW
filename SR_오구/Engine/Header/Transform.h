@@ -47,7 +47,6 @@ public:
 	void	Set_Pos(_vec3 _vec)
 	{
 		m_vInfo[INFO_POS] = { _vec.x, _vec.y, _vec.z };
-		memcpy(&m_matWorld.m[INFO_POS], &m_vInfo[INFO_POS], sizeof(_vec3));
 	}
 
 	void				Chase_Target(const _vec3* pTargetPos, const _float& fSpeed);

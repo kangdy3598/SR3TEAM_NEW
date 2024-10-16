@@ -17,7 +17,7 @@ public:
 	virtual  HRESULT  Ready_Buffer();
 	virtual  void	  Render_Buffer();
 	virtual  void     SetTextureScale(float fScaleSize);
-	virtual  void	  SetTexturePos(float fPosX, float fPosY);
+	virtual  void	  SetTexturePos(float fPos);
 
 protected:
 	LPDIRECT3DVERTEXBUFFER9     m_pVB;

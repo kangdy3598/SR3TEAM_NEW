@@ -57,9 +57,20 @@ public:
 		return vPos;
 	}
 
+	_vec3		Get_StorePos()
+	{
+		_vec3 vPos;
+		m_pStoreTransformCom->Get_Info(INFO_POS, &vPos);
+		return vPos;
+	}
+
 	void		Set_ItemPos(_vec3 _ItemPos)
 	{
 		m_pTransformCom->m_vInfo[INFO_POS] = _ItemPos;
+	}
+	void		Set_StorePos(_vec3 _ItemPos)
+	{
+		m_pStoreTransformCom->m_vInfo[INFO_POS] = _ItemPos;
 	}
 	void		Set_QuickPos(_vec3 _ItemPos)
 	{
@@ -77,15 +88,18 @@ public:
 	virtual   void      LateUpdate_GameObject(const _float& fTimeDelta);
 	virtual   void      Render_GameObject();
 
-	virtual   void      Use_Item()
-	{
+	virtual   void      Use_Item() {}
+	//{
 		//Engine::Get_Layer(L"Layer_GameLogic")->SetGameState(GAMESTATE_NONE);
-	}
+	//}
 	void				Render_QuickItem();
 	void				Render_ItemView();
 
 	// 필드 드랍 아이템
 	void				Set_DropItem(_vec3 _ItemPos);
+	CItemUI*			Get_ItemUI() { return m_pItemUI; }
+	CTexture*			Get_Texture() { return m_pTextureCom; }
+	ITEM_INFO			Get_Info() { return m_tInfo; }
 	virtual   void		OnCollisionEnter(CGameObject* _pOther) {}
 	virtual   void		OnCollision(CGameObject* _pOther) {}
 	virtual   void		OnCollisionExit(CGameObject* _pOther) { m_pPickUpButton->CallButton(false); }
@@ -100,6 +114,8 @@ protected:
 	Engine::CTransform* m_pTransformCom;
 	Engine::CCollider* m_pColliderCom;
 
+	// 스토어 
+	Engine::CTransform* m_pStoreTransformCom;
 	// 퀵슬롯
 	Engine::CTransform* m_pQuickTransformCom;
 	// 아이템 상세 뷰

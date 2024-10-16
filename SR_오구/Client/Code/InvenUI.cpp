@@ -189,7 +189,6 @@ void CInvenUI::Add_Item(CItem* _Item)
     Set_InvenPos(m_ItemList[eType].size() - 1, eType);
     _Item->Set_ItemPos(m_vInvenPos[eType]); //인벤 위치를 저장해둔 
 
-   // Get_Layer(L"Layer_GameLogic")->Add_GameObject(L"Layer_GameLogic", _Item);
 }
 
 void CInvenUI::Remove_Item()

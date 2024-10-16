@@ -41,7 +41,7 @@
 #include "CookSmallFish.h"
 #include "CookMiddleFish.h"
 #include "CookBigFish.h"
-
+#include "WaterToken.h"
 #include "Branch.h"
 #include "Leaf.h"
 
@@ -176,7 +176,8 @@ public:
 	PLAYERHP		GetPlayerHP() { return m_tPlayerHP; }
 	_bool			GetPlayerQuestUI() { return m_bQuest; }//0928
 	_bool			GetPlayerInven() { return m_bInven; }
-	void         SetPlayerCurHP(_int _SetHP)
+	CInvenUI*		GetPlayerInventory() { return m_pInven; }
+	void			SetPlayerCurHP(_int _SetHP)
 	{
 		m_tPlayerHP.iCurHP += _SetHP;
 		if (m_tPlayerHP.iCurHP > m_tPlayerHP.iMaxHP)
@@ -238,7 +239,6 @@ private:
 	CDynamicCamera* m_pCamera;
 	Engine::CStateController* m_pStateControlCom;
 	Engine::CCollider* m_pBoundBox;
-	Engine::CTransform* m_pColTransform;
 
 	PLAYERSTATE					m_ePlayerState;
 

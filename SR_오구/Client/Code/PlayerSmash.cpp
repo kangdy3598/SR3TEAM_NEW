@@ -22,7 +22,7 @@ void PlayerSmash::Enter()
 void PlayerSmash::Update(const _float& fTimeDelta)
 {
     m_fDuration += fTimeDelta;
-    if (m_fDuration > 0.5f)
+  /*  if (m_fDuration > 0.5f)
     {
         m_fDuration = 0.f;
         if (m_iSmashLevel < 3)
@@ -38,12 +38,12 @@ void PlayerSmash::Update(const _float& fTimeDelta)
     {
         m_iStateCount++;
         m_pAnimationCom->SetAnimationPause(true);
-    }
+    }*/
     if (Engine::GetKeyUp(CONTROLKEY::PLY_SMASHKEY))
     {
-        if (m_iStateCount == 0)
+      /*  if (m_iStateCount == 0)
             m_pStateController->ChangeState(PlayerIdle::GetInstance(), m_CGameObject);
-        else
+        else */
         {
             m_pAnimationCom->SetAnimationPause(false);
             dynamic_cast<CDynamicCamera*>(

@@ -143,53 +143,6 @@ void CMCRabbit::Create_Monster()
         m_pRhino->LateReady_GameObject();
 
         m_pPlayer->SetPlayerPos(vPlayerPos);
-        break;
-    case MOTH_MAGE:
-
-        for (int i = 0; i < 4; i++)
-        {
-            _tchar* objectName = new _tchar[32];
-            swprintf(objectName, 32, L"MonsterMothMage%d", i);
-
-            CGameObject* pGameObject = CMonsterMothMage::Create(m_pGraphicDev);
-            NULL_CHECK_RETURN(pGameObject, );
-
-            CLayer* pLayer = Get_Layer(L"Layer_GameLogic");
-            FAILED_CHECK_RETURN(pLayer->Add_GameObject(objectName, pGameObject), );
-
-            dynamic_cast<CMonsterMothMage*>(pGameObject)->testNum = i;
-            dynamic_cast<CMonster*>(pGameObject)->GetLayer(pLayer);
-            CManagement::GetInstance()->GetCurScenePtr()->Add_ObjectGroup(GROUP_TYPE::MONSTER, pGameObject);
-            dynamic_cast<CMonster*>(pGameObject)->LateReady_GameObject();
-
-            switch (i)
-            {
-            case 0:
-                dynamic_cast<CTransform*>(
-                    pGameObject->Get_Component(ID_DYNAMIC, L"Com_Transform")
-                    )->Set_Pos(_vec3(340.f, 30.f, 460.f));
-                break;
-            case 1:
-                dynamic_cast<CTransform*>(
-                    pGameObject->Get_Component(ID_DYNAMIC, L"Com_Transform")
-                    )->Set_Pos(_vec3(420.f, 30.f, 540.f));
-                break;
-            case 2:
-                dynamic_cast<CTransform*>(
-                    pGameObject->Get_Component(ID_DYNAMIC, L"Com_Transform")
-                    )->Set_Pos(_vec3(580.f, 30.f, 540.f));
-                break;
-            case 3:
-                dynamic_cast<CTransform*>(
-                    pGameObject->Get_Component(ID_DYNAMIC, L"Com_Transform")
-                    )->Set_Pos(_vec3(560.f, 30.f, 460.f));
-                break;
-            }
-
-
-        }
-        m_pPlayer->SetPlayerPos(vPlayerPos);
-        break;
     default:
         m_tInfo.pContent = L"아직 대전 상대를 고르지 않았군여?!?!?!!?!??! 선택 후 다시 말 걸어주세여!!!!!";
         break;

@@ -26,7 +26,7 @@ public:
 	void	  CallItemUI(_bool _Call)
 	{
 		m_bCall = _Call;
-		Engine::Play_Sound(L"SFX_147_OguItemAdd.wav", SOUND_EFFECT, 0.7);
+		Engine::Play_Sound(L"SFX_147_OguItemAdd.wav", SOUND_MOREEFFECT, 0.8f);
 	}
 	void	  Set_Text(CItem::ITEM_INFO _tInfo) { m_tCopyInfo = _tInfo; }
 	void	  Set_Texture(CTexture* _pTexture)

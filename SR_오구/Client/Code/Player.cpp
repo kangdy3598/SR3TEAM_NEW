@@ -268,7 +268,7 @@ void CPlayer::OnCollisionExit(CGameObject* _pOther)
     {
         m_bPassAble = true;
         m_vColPlayerPos.x = 0.f;
-        m_vColPlayerPos.y = 0.f;
+        m_vColPlayerPos.y = 0.f;    
         m_vColPlayerPos.z = 0.f;
 
         m_vColliderPos.x = 0.f;

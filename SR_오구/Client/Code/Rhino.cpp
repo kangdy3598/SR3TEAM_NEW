@@ -238,7 +238,7 @@ void CRhino::OnCollision(CGameObject* _pOther)
 
     if (_pOther->Get_Tag() == TAG_PLAYERATTACK)
     {
-        Set_CurHP(-10);
+        Set_CurHP(-1);
     }
 
     return;

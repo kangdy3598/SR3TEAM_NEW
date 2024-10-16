@@ -212,6 +212,7 @@ void CShootingPlant::Shot()
 
 		float tempX =  m_bIsRight ? 1.f : -1.f;		
 		static_cast<CPlantOrb*>(m_vecBullet[i])->Init_Pos(vPos.x, vPos.z, tempX);
+		static_cast<CPlantOrb*>(m_vecBullet[i])->Set_ImageID(m_iAnimID);
 		m_vecBullet[i]->Set_Active(true);
 		return;
 	}
@@ -235,5 +236,8 @@ void CShootingPlant::Create_Bullet()
 
 void CShootingPlant::Free()
 {
+	for (auto& iter : m_vecBullet)	
+		iter->Free();	
+
 	Engine::CGameObject::Free();
 }

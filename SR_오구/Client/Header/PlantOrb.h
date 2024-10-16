@@ -27,7 +27,8 @@ public:
 	virtual void OnCollisionExit(CGameObject* _pOther);
 
 public:	
-	void Set_ImageID(_int _iId) { m_iImageID = _iId; }
+	void Set_ImageID(_int _iId) { m_iImageID = _iId; m_iTargetID = _iId; }
+	void Set_TargetID(_int _iId);
 	_int Get_ImageID() { return m_iImageID; }	
 	void Init_Pos(_float _fX, _float _fZ, _float _fDir);
 	void Set_Speed(_float _fSpeed) { m_fSpeed = _fSpeed; }
@@ -53,6 +54,8 @@ private:
 	_int m_iImageID;
 	_float m_fSpeed;
 	_float m_fDruration;
+	_float m_fTime;
+	_int m_iTargetID;
 
 private:
 	bool LoadTextureFromFile(LPDIRECT3DDEVICE9 d3dDevice, const char* filePath, IDirect3DTexture9** outTexture)

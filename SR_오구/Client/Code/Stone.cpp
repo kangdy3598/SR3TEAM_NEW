@@ -93,7 +93,7 @@ _int CStone::Update_GameObject(const _float& fTimeDelta)
 		m_pTransformCom->Set_Pos(vPos);
 	}	
 
-	m_pShadowTransformCom->Set_Pos(vPos.x, 0.1f, vPos.z + 13.f);
+	m_pShadowTransformCom->Set_Pos(vPos.x, 0.3f, vPos.z + 13.f);
 
 	return iExit;
 }

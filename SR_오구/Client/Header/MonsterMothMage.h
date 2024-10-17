@@ -6,6 +6,8 @@
 #include "Monster.h"
 #include "MonsterMothMageOrb.h"
 #include "MonsterMothMageBullet.h"
+
+
 BEGIN(Engine)
 
 class CRcTex;
@@ -14,6 +16,7 @@ class CCollider;
 
 END
 
+class CMCRabbit;
 class CMonsterMothMage : public CMonster
 {
 private:
@@ -33,13 +36,15 @@ public:
 
 	int testNum = 0;
 public:
-
+	void SetMCRabbit(CMCRabbit* _rabbit) { m_pMCRabbit = _rabbit; }
 private:
 	_int m_iImageID;
 	CMonsterHPUI* m_HPBar;
 	IDirect3DTexture9* m_pTexture;
 
 	CMonsterMothMageOrb* m_pMothMageOrb = nullptr;
+	CMCRabbit* m_pMCRabbit = nullptr;
+
 	int num = 0;
 	_bool m_bIsAttack = false;
 

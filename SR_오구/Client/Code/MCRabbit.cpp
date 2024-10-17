@@ -1,6 +1,10 @@
 #include "pch.h"
 #include "MCRabbit.h"
 #include "FightUI.h"
+#include "VictoryUI.h"
+
+
+
 CMCRabbit::CMCRabbit(LPDIRECT3DDEVICE9 pGraphicDev)
     :CQuestNPC(pGraphicDev), m_pRhino(nullptr)
 {
@@ -42,6 +46,12 @@ _int CMCRabbit::Update_GameObject(const _float& fTimeDelta)
     CQuestNPC::Update_GameObject(fTimeDelta);
 
     _int iExit = Engine::CGameObject::Update_GameObject(fTimeDelta);
+
+    if (m_iDefeatCount >= 4)
+    {
+        Set_Victory();
+        m_iDefeatCount = 0;
+    }
 
     Add_RenderGroup(RENDER_ALPHA, this);
 
@@ -108,6 +118,15 @@ void CMCRabbit::OnCollisionExit(CGameObject* _pOther)
     m_pInterButton->CallButton(false);
 }
 
+void CMCRabbit::Set_Victory()
+{
+    m_pPlayer->SetPlayerPos(_vec3(500.f, 20.f, 800.f));
+
+    CVictoryUI* pUI = dynamic_cast<CVictoryUI*>(Engine::Get_GameObject(L"Layer_UI", L"Victory_UI"));
+    NULL_CHECK_RETURN(pUI, );
+    pUI->CallVictory();
+}
+
 HRESULT CMCRabbit::Add_Component()
 {
     CComponent* pComponent = NULL;
@@ -158,10 +177,12 @@ void CMCRabbit::Create_Monster()
             FAILED_CHECK_RETURN(pLayer->Add_GameObject(objectName, pGameObject), );
 
             dynamic_cast<CMonsterMothMage*>(pGameObject)->testNum = i;
+            dynamic_cast<CMonsterMothMage*>(pGameObject)->SetMCRabbit(this);
             dynamic_cast<CMonster*>(pGameObject)->GetLayer(pLayer);
             CManagement::GetInstance()->GetCurScenePtr()->Add_ObjectGroup(GROUP_TYPE::MONSTER, pGameObject);
             dynamic_cast<CMonster*>(pGameObject)->LateReady_GameObject();
 
+            
             switch (i)
             {
             case 0:

@@ -44,8 +44,8 @@ void CJungleForestStage::LateReady_Scene()
 
     Engine::CScene::LateReady_Scene();
 
-    /*player->GetCamera()->WalkTo2(_vec3(750.f, 30.f, 400.f)
-        , 5.f, _vec3(750.f, 30.f, 1900.f));*/
+    player->GetCamera()->WalkTo2(_vec3(750.f, 30.f, 400.f)
+        , 5.f, _vec3(750.f, 30.f, 1900.f));
 }
 
 _int CJungleForestStage::Update_Scene(const _float& fTimeDelta)

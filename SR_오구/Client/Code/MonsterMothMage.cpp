@@ -3,6 +3,7 @@
 
 #include "Define.h"
 #include "Export_System.h"
+#include "MCRabbit.h"
 
 CMonsterMothMage::CMonsterMothMage(LPDIRECT3DDEVICE9 pGraphicDev)
     :CMonster(pGraphicDev)
@@ -73,7 +74,7 @@ _int CMonsterMothMage::Update_GameObject(const _float& fTimeDelta)
         if (m_tMonsterHP.iCurHP == 0)
         {
             Engine::Play_Sound(L"SFX_92_MonsterMothMage_Death.wav", SOUND_EFFECT, 0.7);
-
+            if (m_pMCRabbit) m_pMCRabbit->AddDefeatCount();
             m_activation = false;
             m_pMothMageOrb->SetActivation(false);
             return 0;

@@ -21,16 +21,16 @@ HRESULT CKnightDog::Ready_GameObject()
     m_pAnimatorCom->CreateAnimation(L"Dog", m_pNPCTex, _vec2(0.f, 0.f), _vec2(128.f, 128.f), _vec2(128.f, 0.f), 0.15f, 3);
 
     m_tInfo.pName = L"강아지 나이트";
-    m_tInfo.pContent = L"내잡몹이랑싸워";
+    m_tInfo.pContent = L"난 그냥 서있는거야..다리가 아파서..";
 
     return S_OK;
 }
 
 void CKnightDog::LateReady_GameObject()
 {
-    CQuestNPC::LateReady_GameObject();
-    m_pRabbit = dynamic_cast<CMCRabbit*>(Engine::Get_GameObject(L"Layer_GameLogic", L"NPCRabbit"));
-    NULL_CHECK_RETURN(m_pRabbit);
+    //CQuestNPC::LateReady_GameObject();
+    //m_pRabbit = dynamic_cast<CMCRabbit*>(Engine::Get_GameObject(L"Layer_GameLogic", L"NPCRabbit"));
+    //NULL_CHECK_RETURN(m_pRabbit);
 }
 
 _int CKnightDog::Update_GameObject(const _float& fTimeDelta)
@@ -73,7 +73,7 @@ void CKnightDog::OnCollision(CGameObject* _pOther)
 
             m_pTextBox->Set_Text(m_tInfo); //대화창 텍스트 세팅
             m_pTextBox->CallTextBox(true); //대화창 호출
-            m_pRabbit->Set_Monster(CMCRabbit::MOTH_MAGE);
+            //m_pRabbit->Set_Monster(CMCRabbit::MOTH_MAGE);
         }
     }
 

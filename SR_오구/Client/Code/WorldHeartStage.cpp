@@ -36,7 +36,7 @@ HRESULT CWorldHearStage::Ready_Scene()
 
 void CWorldHearStage::LateReady_Scene()
 {
-	_vec3 pos(350.f, 16.f, 150.f);
+	_vec3 pos(375.f, 16.f, 300.f);
 	CPlayer* player = dynamic_cast<CPlayer*>(
 		Get_GameObject(L"Layer_GameLogic", L"Player"));
 
@@ -49,7 +49,7 @@ void CWorldHearStage::LateReady_Scene()
 
 	Engine::CScene::LateReady_Scene();
 
-	player->GetCamera()->WalkTo2(pos, 10.f, _vec3(1900.f, 180.f, 1700.f));
+	player->GetCamera()->WalkTo2(pos, 10.f, _vec3(1800.f, 180.f, 1670.f));
 }
 
 _int CWorldHearStage::Update_Scene(const _float& fTimeDelta)

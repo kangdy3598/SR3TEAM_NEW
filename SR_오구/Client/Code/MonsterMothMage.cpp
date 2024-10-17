@@ -182,6 +182,11 @@ void CMonsterMothMage::OnCollision(CGameObject* _pOther)
     if (!m_activation)
         return;
 
+    if (_pOther->Get_Tag() == TAG_PLAYERATTACK)
+    {
+        SetMonsterCurHP(-1);
+    }
+
     if (_pOther->GetObjectKey() != L"PlayerInteractionBox")
         return;
 
@@ -195,6 +200,8 @@ void CMonsterMothMage::OnCollision(CGameObject* _pOther)
 
         Engine::Play_Sound(L"SFX_92_MonsterMothMage_Hit.wav", SOUND_EFFECT, 0.7);
     }
+
+
 }
 
 HRESULT CMonsterMothMage::Add_Component()

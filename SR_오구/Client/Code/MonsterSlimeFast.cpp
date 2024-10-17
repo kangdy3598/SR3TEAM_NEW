@@ -96,7 +96,7 @@ _int CMonsterSlimeFast::Update_GameObject(const _float& fTimeDelta)
         if (m_tMonsterHP.iCurHP == 0)
         {
             m_activation = false;
-            CGameObject* pGameObject = CBranch::Create(m_pGraphicDev);
+            /*CGameObject* pGameObject = CBranch::Create(m_pGraphicDev);
             NULL_CHECK_RETURN(pGameObject, E_FAIL);
 
             _vec3 dropPos;
@@ -108,7 +108,7 @@ _int CMonsterSlimeFast::Update_GameObject(const _float& fTimeDelta)
                 Get_Layer(L"Layer_GameLogic")->Add_GameObject(L"Item_Branch", pGameObject), 0);
             CManagement::GetInstance()->GetCurScenePtr()->Add_ObjectGroup(GROUP_TYPE::OBJECT, pGameObject);
 
-            dynamic_cast<CBranch*>(pGameObject)->LateReady_GameObject();
+            dynamic_cast<CBranch*>(pGameObject)->LateReady_GameObject();*/
 
             return 0;
         }

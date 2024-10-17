@@ -108,6 +108,7 @@ HRESULT CMapEditor::Ready_Prototype()
 	FAILED_CHECK_RETURN(Engine::Ready_Proto(L"Proto_ArenaMap", Engine::CTexture::Create(m_pGraphicDev, L"../Bin/Resource/Texture/Map/ArenaMap.png", TEX_NORMAL)), E_FAIL);
 	FAILED_CHECK_RETURN(Engine::Ready_Proto(L"Proto_SunTempleMap", Engine::CTexture::Create(m_pGraphicDev, L"../Bin/Resource/Texture/Map/SunTempleMap.png", TEX_NORMAL)), E_FAIL);
 	FAILED_CHECK_RETURN(Engine::Ready_Proto(L"Proto_TownMap", Engine::CTexture::Create(m_pGraphicDev, L"../Bin/Resource/Texture/Map/TownMap.png", TEX_NORMAL)), E_FAIL);	
+	FAILED_CHECK_RETURN(Engine::Ready_Proto(L"Proto_PlayerTexture", Engine::CTexture::Create(m_pGraphicDev, L"../Bin/Resource/Texture/Map/TownMap.png", TEX_NORMAL)), E_FAIL);
 
 	CResMgr::GetInstance()->init();
 

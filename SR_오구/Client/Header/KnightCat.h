@@ -1,6 +1,8 @@
 #pragma once
 #include "TextBox.h"
 #include "QuestNPC.h"
+#include "MCRabbit.h"
+
 class CKnightCat : public CQuestNPC
 {
 private:
@@ -16,6 +18,9 @@ public:
 
 	virtual   void		OnCollision(CGameObject* _pOther);
 	virtual   void		OnCollisionExit(CGameObject* _pOther);
+
+private:
+	CMCRabbit* m_pRabbit;
 
 private:
 	HRESULT    Add_Component();

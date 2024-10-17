@@ -37,7 +37,7 @@ void CJungleForestStage::LateReady_Scene()
 
     dynamic_cast<CTransform*>(
         player->Get_Component(ID_DYNAMIC, L"Com_Transform")
-        )->Set_Pos(1400.f, 16.f, 300.f);
+        )->Set_Pos(1400.f, 16.f, 260.f);
 
     CManagement::GetInstance()->GetCurScenePtr()->Add_ObjectGroup(GROUP_TYPE::PLAYER, player);
     CManagement::GetInstance()->GetCurScenePtr()->Add_ObjectGroup(GROUP_TYPE::PLAYER, player->GetInteractionBox());

@@ -21,7 +21,7 @@ HRESULT CKnightCat::Ready_GameObject()
     m_pAnimatorCom->CreateAnimation(L"Cat", m_pNPCTex, _vec2(0.f, 0.f), _vec2(128.f, 128.f), _vec2(128.f, 0.f), 0.15f, 3);
 
     m_tInfo.pName = L"고양이 나이트";
-    m_tInfo.pContent = L"내가 잡아온 애랑 싸워.";
+    m_tInfo.pContent = L"내가 잡아온 '모스 메이지'를 대전 상대로 지정해주지.";
 
     return S_OK;
 }
@@ -29,6 +29,8 @@ HRESULT CKnightCat::Ready_GameObject()
 void CKnightCat::LateReady_GameObject()
 {
     CQuestNPC::LateReady_GameObject();
+    m_pRabbit = dynamic_cast<CMCRabbit*>(Engine::Get_GameObject(L"Layer_GameLogic", L"NPCRabbit"));
+    NULL_CHECK_RETURN(m_pRabbit);
 }
 
 _int CKnightCat::Update_GameObject(const _float& fTimeDelta)
@@ -71,6 +73,7 @@ void CKnightCat::OnCollision(CGameObject* _pOther)
 
             m_pTextBox->Set_Text(m_tInfo); //대화창 텍스트 세팅
             m_pTextBox->CallTextBox(true); //대화창 호출
+            m_pRabbit->Set_Monster(CMCRabbit::MOTH_MAGE);
         }
     }
 

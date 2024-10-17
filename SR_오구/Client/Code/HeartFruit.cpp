@@ -116,14 +116,13 @@ void CHeartFruit::OnCollision(CGameObject* _pOther)
 
 	if (Engine::GetKeyDown(DIK_A)) //줍기
 	{
-		// 1005 동영
-		// 줍기 -> 플레이어, 오브젝트 멈춤 + 플레이어 애니메이션 실행 -> 애니메이션이 끝나면 UI 출력 
+
 		Engine::Get_Layer(L"Layer_GameLogic")->SetGameState(GAMESTATE_EXPLAINATION);
 		dynamic_cast<CPlayer*>(_pOther)->ChangePickUpState();
 
 		m_bDead = true;
 		m_pPlayer->SetPlayerMaxHP(1);
-		//Engine::Play_Sound(L"SFX_147_OguItemAdd.wav", SOUND_EFFECT, 0.7);
+		Engine::Play_Sound(L"SFX_147_OguItemAdd.wav", SOUND_EFFECT, 0.7);
 		m_pEffect->Call_AddHP();
 	}
 }

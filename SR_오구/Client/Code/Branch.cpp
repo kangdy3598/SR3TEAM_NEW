@@ -36,13 +36,6 @@ void CBranch::LateReady_GameObject()
 
 _int CBranch::Update_GameObject(const _float& fTimeDelta)
 {
-	if (m_pPlayer->GetPlayerState() == PLAYERSTATE::PLY_PICKUP &&
-		m_pPlayer->GetAnimationComp()->IsAnimationEnd())
-	{
-		m_pItemUI->CallItemUI(true);
-		m_pItemUI->Set_Texture(m_pTextureCom);
-		m_pItemUI->Set_Text(m_tInfo);
-	}
 
 	return CItem::Update_GameObject(fTimeDelta);
 }
@@ -133,6 +126,14 @@ void CBranch::OnCollisionEnter(CGameObject* _pOther)
 		//¾ÆÀÌÅÛ È¹µæ ÀÌÆåÆ® ¹ß»ý
 		return;
 	}
+
+	/*if (m_pPlayer->GetPlayerState() == PLAYERSTATE::PLY_PICKUP &&
+		m_pPlayer->GetAnimationComp()->IsAnimationEnd())
+	{
+		m_pItemUI->CallItemUI(true);
+		m_pItemUI->Set_Texture(m_pTextureCom);
+		m_pItemUI->Set_Text(m_tInfo);
+	}*/
 }
 
 void CBranch::OnCollision(CGameObject* _pOther)

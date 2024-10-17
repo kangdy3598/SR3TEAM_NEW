@@ -194,7 +194,7 @@ HRESULT CSunTempleStage::Ready_Layer_GameLogic(const _tchar* pLayerTag)
 
 	pGameObject = CExpressTicket::Create(m_pGraphicDev);
 	NULL_CHECK_RETURN(pGameObject, E_FAIL);
-	_vec3 ItemPos = { 1030.f, 30.f, 1800.f }; // 이거만 수정 하면 될거같은디 
+	_vec3 ItemPos = { 1023.f, 30.f, 1850.f }; // 이거만 수정 하면 될거같은디 
 	dynamic_cast<CExpressTicket*>(pGameObject)->Set_DropItem(ItemPos);
 	FAILED_CHECK_RETURN(pLayer->Add_GameObject(L"Item_ExpressTicket", pGameObject), E_FAIL);
 	CManagement::GetInstance()->GetCurScenePtr()->Add_ObjectGroup(GROUP_TYPE::OBJECT, pGameObject);

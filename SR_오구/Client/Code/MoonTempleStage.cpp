@@ -203,7 +203,7 @@ HRESULT CMoonTempleStage::Ready_Layer_GameLogic(const _tchar* pLayerTag)
 
 	pGameObject = CHeartFruit::Create(m_pGraphicDev);
 	NULL_CHECK_RETURN(pGameObject, E_FAIL);
-	dynamic_cast<CHeartFruit*>(pGameObject)->Set_Pos(_vec3{ 1800.f, 20.f, 1350.f });
+	dynamic_cast<CHeartFruit*>(pGameObject)->Set_Pos(_vec3{ 1825.f, 20.f, 1410.f });
 	FAILED_CHECK_RETURN(pLayer->Add_GameObject(L"HeartFruit", pGameObject), E_FAIL);
 	CManagement::GetInstance()->GetCurScenePtr()->Add_ObjectGroup(GROUP_TYPE::OBJECT, pGameObject);
 

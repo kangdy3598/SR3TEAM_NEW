@@ -2,6 +2,7 @@
 #include "GameObject.h"
 #include "Export_Utility.h"
 
+
 BEGIN(Engine)
 
 class CRcTex;
@@ -10,6 +11,7 @@ class CTransform;
 
 END
 
+class CPlayer;
 class CBuffUI : public Engine::CGameObject
 {
 protected:
@@ -28,13 +30,14 @@ public:
 	virtual   void      LateUpdate_GameObject(const _float& fTimeDelta);
 	virtual   void      Render_GameObject();
 
+	void SetPlayer(CPlayer* _Player) { m_CPlayer = _Player; }
 protected:
 	Engine::CRcTex* m_pBufferCom;
 	Engine::CTexture* m_pTextureCom;
 	Engine::CTransform* m_pTransformCom;
 
 	_float		m_fBuffTime;
-
+	CPlayer* m_CPlayer;
 protected:
 	virtual void Free();
 

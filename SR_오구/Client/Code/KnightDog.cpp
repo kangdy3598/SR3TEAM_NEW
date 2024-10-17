@@ -28,9 +28,9 @@ HRESULT CKnightDog::Ready_GameObject()
 
 void CKnightDog::LateReady_GameObject()
 {
-    //CQuestNPC::LateReady_GameObject();
-    //m_pRabbit = dynamic_cast<CMCRabbit*>(Engine::Get_GameObject(L"Layer_GameLogic", L"NPCRabbit"));
-    //NULL_CHECK_RETURN(m_pRabbit);
+    CQuestNPC::LateReady_GameObject();
+    m_pRabbit = dynamic_cast<CMCRabbit*>(Engine::Get_GameObject(L"Layer_GameLogic", L"NPCRabbit"));
+    NULL_CHECK_RETURN(m_pRabbit);
 }
 
 _int CKnightDog::Update_GameObject(const _float& fTimeDelta)

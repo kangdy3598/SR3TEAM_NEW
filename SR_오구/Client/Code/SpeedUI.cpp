@@ -1,5 +1,6 @@
 #include "pch.h"
 #include "SpeedUI.h"
+#include "Player.h"
 
 CSpeedUI::CSpeedUI(LPDIRECT3DDEVICE9 pGraphicDev)
 	:CBuffUI(pGraphicDev)
@@ -30,7 +31,8 @@ _int CSpeedUI::Update_GameObject(const _float& fTimeDelta)
         Update_SettingTime(fTimeDelta);
         Engine::Add_RenderGroup(RENDER_UI, this);
     }
-
+    else
+        m_CPlayer->SetItemMoveSpeed(0);
     return iExit;
 }
 
@@ -67,6 +69,8 @@ void CSpeedUI::Render_GameObject()
         Engine::Render_Font(L"Font_Ogu24", strBuffMinute, &vCountPos, D3DXCOLOR(1.f, 1.f, 1.f, 1.f));
 
     }
+
+   
 }
 
 HRESULT CSpeedUI::Add_Component()

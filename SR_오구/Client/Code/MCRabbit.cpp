@@ -153,7 +153,7 @@ HRESULT CMCRabbit::Add_Component()
 
 void CMCRabbit::Create_Monster()
 {
-    _vec3 vPlayerPos = { 500.f, 30.f, 300.f };
+    _vec3 vPlayerPos = { 500.f, 16.f, 300.f };
 
     switch (m_eMonster)
     {

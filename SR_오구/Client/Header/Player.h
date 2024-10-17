@@ -164,10 +164,10 @@ public:
 	float			GetMoveSpeed() { return m_fMoveSpeed; }
 	void			SetMoveSpeed(float _fSpeed) { m_fMoveSpeed = _fSpeed; }
 	float			GetItemMoveSpeed() { return m_fItemMoveSpeed; }
-	void			SetItemMoveSpeed(float _itemSpeed) { m_fItemMoveSpeed += _itemSpeed; }
+	void			SetItemMoveSpeed(float _itemSpeed) { m_fItemMoveSpeed = _itemSpeed; }
 
 	int				GetItemAttackPower() { return m_iItemAttackPower; }
-	void			SetItemAttackPower(int _itemPower) { m_iItemAttackPower += _itemPower; }
+	void			SetItemAttackPower(int _itemPower) { m_iItemAttackPower = _itemPower; }
 	//¹ÎÁö
 	_bool           GetVisitingStore() { return m_bStoreVisit; }
 	void            SetVisitingStore(_bool _bVisit) { m_bStoreVisit = _bVisit; }

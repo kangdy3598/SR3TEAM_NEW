@@ -37,6 +37,10 @@ void PlayerLiftMove::Exit()
 
 void PlayerLiftMove::Key_Input(const _float& fTimeDelta)
 {
+    m_fMoveSpeed = 50.f;
+    (dynamic_cast<CPlayer*>(m_CGameObject))->SetMoveSpeed(m_fMoveSpeed);
+    float fItemMoveSpeed = (dynamic_cast<CPlayer*>(m_CGameObject))->GetItemMoveSpeed();
+    m_fMoveSpeed += fItemMoveSpeed;
 
     _vec3  vLook;
     _vec3  vRight;

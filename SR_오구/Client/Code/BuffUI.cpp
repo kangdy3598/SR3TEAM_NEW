@@ -1,5 +1,6 @@
 #include "pch.h"
 #include "BuffUI.h"
+#include "Player.h"
 
 CBuffUI::CBuffUI(LPDIRECT3DDEVICE9 pGraphicDev)
     :Engine::CGameObject(pGraphicDev), m_fBuffTime(0)

@@ -11,17 +11,13 @@ void PlayerMove::Enter()
 
     dynamic_cast<CPlayer*>(m_CGameObject)->SetPlayerState(PLAYERSTATE::PLY_MOVE);
 
-    m_fMoveSpeed = 50.f;
-    (dynamic_cast<CPlayer*>(m_CGameObject))->SetMoveSpeed(m_fMoveSpeed);
-    float fItemMoveSpeed = (dynamic_cast<CPlayer*>(m_CGameObject))->GetItemMoveSpeed();
-    m_fMoveSpeed += fItemMoveSpeed;
-
     m_fDuration = 0.7f;
 
 }
 
 void PlayerMove::Update(const _float& fTimeDelta)
 {
+    
     m_fDuration += fTimeDelta;
     if (m_fDuration > 1.f)
     {
@@ -64,6 +60,12 @@ void PlayerMove::Exit()
 
 void PlayerMove::Key_Input(const _float& fTimeDelta)
 {
+    m_fMoveSpeed = 50.f;
+    (dynamic_cast<CPlayer*>(m_CGameObject))->SetMoveSpeed(m_fMoveSpeed);
+    float fItemMoveSpeed = (dynamic_cast<CPlayer*>(m_CGameObject))->GetItemMoveSpeed();
+    m_fMoveSpeed += fItemMoveSpeed;
+
+
     _vec3  vLook;
     _vec3  vRight;
     m_pTransformCom->Get_Info(INFO_LOOK, &vLook);

@@ -35,7 +35,7 @@ void CArenaStage::LateReady_Scene()
 
     dynamic_cast<CTransform*>(
         player->Get_Component(ID_DYNAMIC, L"Com_Transform")
-        )->Set_Pos(600.f, 30.f, 800.f);
+        )->Set_Pos(600.f, 16.f, 800.f);
 
     CManagement::GetInstance()->GetCurScenePtr()->Add_ObjectGroup(GROUP_TYPE::PLAYER, player);
     CManagement::GetInstance()->GetCurScenePtr()->Add_ObjectGroup(GROUP_TYPE::PLAYER, player->GetInteractionBox());

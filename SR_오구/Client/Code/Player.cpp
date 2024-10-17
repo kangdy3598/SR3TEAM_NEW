@@ -67,6 +67,7 @@ HRESULT CPlayer::Ready_GameObject()
     //m_pGraphicDev->SetLight(0, &tLightInfo);    
     //m_pGraphicDev->LightEnable(0, TRUE);    
 
+    m_fMoveSpeed = 50.f;
    
 
     return S_OK;
@@ -90,9 +91,11 @@ void CPlayer::LateReady_GameObject()
 
     m_BuffArray[0] = dynamic_cast<CPowerUI*>(Engine::Get_GameObject(L"Layer_UI", L"Power_UI"));
     NULL_CHECK_RETURN(m_BuffArray[0]);
+    m_BuffArray[0]->SetPlayer(this);
 
     m_BuffArray[1] = dynamic_cast<CSpeedUI*>(Engine::Get_GameObject(L"Layer_UI", L"Speed_UI"));
     NULL_CHECK_RETURN(m_BuffArray[1]);
+    m_BuffArray[1]->SetPlayer(this);
 
     m_equipHat = CEquipHat::Create(m_pGraphicDev);
     NULL_CHECK_RETURN(m_equipHat, );

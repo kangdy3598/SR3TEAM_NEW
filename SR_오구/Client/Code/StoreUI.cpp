@@ -126,7 +126,7 @@ HRESULT CStoreUI::Add_Component()
 
 void CStoreUI::Key_Input(const _float& fTimeDelta)
 {
-    if (Engine::GetKeyDown(DIK_P))
+    if (Engine::GetKeyDown(DIK_D))
     {
         m_ItemList.clear();
         m_bCall = false;

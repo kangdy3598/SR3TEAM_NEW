@@ -374,6 +374,7 @@ void CDynamicCamera::ShakeMoveTrigger(const _float& fTimeDelta)
         shakeAmplitude = 0.1f;
         shakeTimer = shakeDuration;
         m_vAt.y = m_fPrevShakeAtYPos;
+        DirectMoveToPlayer();
     }
 
     RayTransfer();

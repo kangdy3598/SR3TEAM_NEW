@@ -47,6 +47,7 @@ _int CPlayerInteractionBox::Update_GameObject(const _float& fTimeDelta)
     }
 
     // 10월 11일 코드 추가 
+    _vec3 vPlayerDir2 = m_CPlayer->GetPlayerDirVector2();
     if(m_CPlayer->m_bSmashEnd ==true)
     {
         CTransform* m_playerTransform = dynamic_cast<CTransform*>(Engine::Get_Component(
@@ -55,8 +56,8 @@ _int CPlayerInteractionBox::Update_GameObject(const _float& fTimeDelta)
         _vec3 pos;
         m_playerTransform->Get_Info(INFO_POS, &pos);
         m_pTransformCom->m_vScale = { 20.f,20.f,20.f };
-        pos.x += vPlayerDir.x * 30; 
-        pos.z -= vPlayerDir.z * 30; 
+        pos.x += vPlayerDir2.x * 30; 
+        pos.z -= vPlayerDir2.z * 30; 
 
         m_pTransformCom->Set_Pos(pos);
 

@@ -77,4 +77,5 @@ void PlayerSmash::Exit()
 {
     m_pAnimationCom->SetTextureScale(1.f);
     (dynamic_cast<CPlayer*>(m_CGameObject))->FixCurPlayerDir(false);
+    dynamic_cast<CPlayer*>(m_CGameObject)->m_bSmashEnd = false;
 }

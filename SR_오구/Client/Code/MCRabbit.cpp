@@ -162,6 +162,7 @@ void CMCRabbit::Create_Monster()
         m_pRhino->LateReady_GameObject();
 
         m_pPlayer->SetPlayerPos(vPlayerPos);
+       // m_pPlayer->GetCamera()->DirectMoveToPlayer();
         break;
     case MOTH_MAGE:
 
@@ -210,6 +211,7 @@ void CMCRabbit::Create_Monster()
 
         }
         m_pPlayer->SetPlayerPos(vPlayerPos);
+    //    m_pPlayer->GetCamera()->DirectMoveToPlayer();
         break;
     default:
         m_tInfo.pContent = L"아직 대전 상대를 고르지 않았군여?!?!?!!?!??! 선택 후 다시 말 걸어주세여!!!!!";

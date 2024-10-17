@@ -69,6 +69,8 @@ void CAnimator2::CreateAnimation(const wstring& _strName, IDirect3DTexture9* _pT
 
 CAnimation2* CAnimator2::FindAnimation(const wstring& _strName)
 {
+	if (m_mapAnim.empty())
+		return nullptr;
 
 	map<wstring, CAnimation2*>::iterator iter = m_mapAnim.find(_strName);
 

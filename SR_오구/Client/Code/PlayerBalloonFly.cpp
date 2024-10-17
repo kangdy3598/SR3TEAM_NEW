@@ -25,7 +25,7 @@ void PlayerBalloonFly::Enter()
     }
     (dynamic_cast<CPlayer*>(m_CGameObject))->FixCurPlayerDir(true);
     m_pAnimationCom->SetTextureScale(1.5f);
-    m_pAnimationCom->SetTexturePos(-0.15f, 0.15f);
+    m_pAnimationCom->SetTexturePos(-0.15f, 0.35f);
 }
 
 void PlayerBalloonFly::Update(const _float& fTimeDelta)

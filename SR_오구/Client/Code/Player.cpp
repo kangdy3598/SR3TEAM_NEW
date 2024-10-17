@@ -74,6 +74,9 @@ HRESULT CPlayer::Ready_GameObject()
 
 void CPlayer::LateReady_GameObject()
 {
+    m_pStateControlCom->ChangeState(PlayerIdle::GetInstance(), this);
+    m_bNextStage = false;
+
     Engine::CGameObject::LateReady_GameObject();
 
     m_pQuestUI = dynamic_cast<CQuestUI*>(Engine::Get_GameObject(L"Layer_UI", L"Quest_UI"));

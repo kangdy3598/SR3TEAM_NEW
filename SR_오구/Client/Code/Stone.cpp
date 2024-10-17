@@ -62,7 +62,6 @@ _int CStone::Update_GameObject(const _float& fTimeDelta)
 		}
 	}
 
-
 	if (m_iImageID != m_iTargetID) {
 		m_fTime += fTimeDelta;
 

@@ -35,7 +35,7 @@ _int CColorStone::Update_GameObject(const _float& fTimeDelta)
 		return 0;
 
 	Add_RenderGroup(RENDER_ALPHA, this);
-	_int iExit = Engine::CGameObject::Update_GameObject(fTimeDelta);
+	_int iExit = Engine::CGameObject::Update_GameObject(fTimeDelta);	
 
 	return iExit;
 }
@@ -71,7 +71,7 @@ void CColorStone::OnCollision(CGameObject* _pOther)
 		if (m_pComStone == nullptr) {
 			Play_Sound(L"SFX_47_Jelly_Seperate.wav", SOUND_PUZZLE_SUB, 1.f);
 			return;
-		}			
+		}		
 
 		_vec3 vPos;
 		m_pTransformCom->Get_Info(INFO_POS, &vPos);

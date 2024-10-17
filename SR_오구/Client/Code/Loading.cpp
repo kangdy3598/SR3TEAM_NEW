@@ -306,7 +306,8 @@ _uint CLoading::Loading_AnimData()
 
 		TCHAR* pProtoTextureName = new TCHAR[128];
 		lstrcpy(pProtoTextureName, pProtoName);
-		lstrcat(pProtoTextureName, L"Texture"); // Proto_PlayerTexture
+		lstrcat(pProtoTextureName, L"Texture"); // Proto_PlayerTexture 
+		//Texture
 
 		FAILED_CHECK_RETURN(Engine::Ready_Proto(pProtoTextureName,
 			Engine::CTexture::Create(m_pGraphicDev, imgPathList)), E_FAIL);

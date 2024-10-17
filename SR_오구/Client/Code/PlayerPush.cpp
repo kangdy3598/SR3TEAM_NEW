@@ -45,7 +45,7 @@ void PlayerPush::Update(const _float& fTimeDelta)
 
 void PlayerPush::Exit()
 {
-    (dynamic_cast<CPlayer*>(m_CGameObject))->SetInteractingObj(nullptr);
+  //  (dynamic_cast<CPlayer*>(m_CGameObject))->SetInteractingObj(nullptr);
 }
 
 void PlayerPush::Key_Input(const _float& fTimeDelta)

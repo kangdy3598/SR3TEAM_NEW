@@ -10,6 +10,7 @@ class CCollider;
 
 END
 
+class CPlayerInteractionBox;
 class CStone :public Engine::CGameObject
 {
 private:
@@ -54,6 +55,7 @@ private:
 	_int m_iTargetID;
 	_float m_fTime;
 	_vec3 m_vVelocity;	
+	CPlayerInteractionBox* m_pInteractionBox = nullptr;
 
 private:
 	bool LoadTextureFromFile(LPDIRECT3DDEVICE9 d3dDevice, const char* filePath, IDirect3DTexture9** outTexture)
@@ -70,6 +72,7 @@ public:
 	virtual void OnCollisionEnter(CGameObject* _pOther);
 	virtual void OnCollisionExit(CGameObject* _pOther);
 
+	void SetInteractingObj();
 
 //10월 11일 긴급히 적음 선환
 public:

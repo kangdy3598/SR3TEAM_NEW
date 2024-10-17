@@ -239,6 +239,8 @@ void CStone::OnCollisionEnter(CGameObject* _pOther)
 		{
 			m_vDirSmash = dynamic_cast<CPlayerInteractionBox*>(_pOther)->GetPlayer()->GetPlayerDirVector2();
 			m_bThrowStone = true;
+
+			m_pInteractionBox = dynamic_cast<CPlayerInteractionBox*>(_pOther);
 		}
 		
 	}
@@ -247,4 +249,11 @@ void CStone::OnCollisionEnter(CGameObject* _pOther)
 
 void CStone::OnCollisionExit(CGameObject* _pOther)
 {
+	SetInteractingObj();
+}
+
+void CStone::SetInteractingObj()
+{
+	if (m_pInteractionBox)
+		m_pInteractionBox->GetPlayer()->SetInteractingObj(nullptr);
 }

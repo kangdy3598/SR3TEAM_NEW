@@ -1,5 +1,6 @@
 #include "pch.h"
 #include "StoneHole.h"
+#include "Stone.h"
 #include "Export_Utility.h"
 
 CStoneHole::CStoneHole(LPDIRECT3DDEVICE9 pGraphicDev)
@@ -85,6 +86,7 @@ void CStoneHole::OnCollisionEnter(CGameObject* _pOther)
 		// ★동영
 		// 돌을 구멍에 넣고 난 이후에도 계속 미는 모션이 출력되는 현상
 		// Player->ChangeState(Idle) 하거나 Player->SetInteractingObj(nullptr)
+		dynamic_cast<CStone*>(_pOther)->SetInteractingObj();
 	}
 }
 

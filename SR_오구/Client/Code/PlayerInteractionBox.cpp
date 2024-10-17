@@ -133,6 +133,10 @@ void CPlayerInteractionBox::OnCollisionEnter(CGameObject* _pOther)
             m_CPlayer->SetPushTrigger(true);
     }
 
+    if (_pOther->IncludingType(OBJ_TYPE::LIFT_ABLE))
+    {
+        int a = 10;
+    }
     if(m_CPlayer->GetPlayerState() == PLAYERSTATE::PLY_SMASH)
     {
         _vec3 test = m_CPlayer->GetPlayerDirVector2();

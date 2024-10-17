@@ -54,7 +54,9 @@ _int CElectriceelBossStage::Update_Scene(const _float& fTimeDelta)
 {
 	_int  iExit = Engine::CScene::Update_Scene(fTimeDelta);
 
-    if (GetAsyncKeyState('M') & 0x8000)
+    CPlayer* player = dynamic_cast<CPlayer*>(
+        Get_GameObject(L"Layer_GameLogic", L"Player"));
+    if ((GetAsyncKeyState('M') & 0x8000) || player->IsNextSceneOn())
     {
         Engine::CScene* pStage3 = CTownStage::Create(m_pGraphicDev);
         NULL_CHECK_RETURN(pStage3, -1);

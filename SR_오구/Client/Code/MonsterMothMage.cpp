@@ -76,19 +76,6 @@ _int CMonsterMothMage::Update_GameObject(const _float& fTimeDelta)
 
             m_activation = false;
             m_pMothMageOrb->SetActivation(false);
-            CGameObject* pGameObject = CBranch::Create(m_pGraphicDev);
-            NULL_CHECK_RETURN(pGameObject, E_FAIL);
-
-            _vec3 dropPos;
-            dynamic_cast<CTransform*>(Get_Component(ID_DYNAMIC, L"Com_Transform")
-                )->Get_Info(INFO_POS, &dropPos);
-
-            dynamic_cast<CBranch*>(pGameObject)->Set_DropItem(dropPos);
-            FAILED_CHECK_RETURN(
-                Get_Layer(L"Layer_GameLogic")->Add_GameObject(L"Item_Branch", pGameObject), 0);
-            CManagement::GetInstance()->GetCurScenePtr()->Add_ObjectGroup(GROUP_TYPE::OBJECT, pGameObject);
-
-            dynamic_cast<CBranch*>(pGameObject)->LateReady_GameObject();
             return 0;
         }
 

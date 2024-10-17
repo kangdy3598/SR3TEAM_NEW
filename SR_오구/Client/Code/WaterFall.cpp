@@ -85,10 +85,12 @@ _int CWaterFall::Update_GameObject(const _float& fTimeDelta)
 	if (m_dwtime + 1000 < GetTickCount64())
 	{
 		m_iCount++;
-		m_pAnimatorCom->Play(L"Water_Fall", true);
-		m_pTransformCom->Move_Pos(&m_vDir, fTimeDelta, 150.f);
-		m_pTransformCom->m_vScale = { 50.f, 100.f,10.f };
-
+		if (m_pAnimatorCom)
+		{
+			m_pAnimatorCom->Play(L"Water_Fall", true);
+			m_pTransformCom->Move_Pos(&m_vDir, fTimeDelta, 150.f);
+			m_pTransformCom->m_vScale = { 50.f, 100.f,10.f };
+		}
 		if(m_iCount == 1)
 		{
 			m_pTransformCom->Rotation(ROT_X, -90 * 3.14f / 180.f);

@@ -46,7 +46,7 @@ void PlayerLift::Enter()
                 vDownPos.x -= 30;
         }
 
-        vDownPos.y -= 10;
+        vDownPos.y = 15;
         // colObj = dynamic_cast<CPlayer*>(m_CGameObject)->GetInteractingObj();
         colObjTransform = dynamic_cast<CTransform*>(
             colObj->Get_Component(ID_DYNAMIC, L"Com_Transform"));

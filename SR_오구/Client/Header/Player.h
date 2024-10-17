@@ -196,7 +196,7 @@ public:
 		m_BuffArray[0]->Set_BuffTime(_SetTime);
 		m_iItemAttackPower = _SetPower;
 	}
-	void			SetSpeedTime(_int _SetTime, _float _SetSpeed = 20.f)
+	void			SetSpeedTime(_int _SetTime, _float _SetSpeed = 100.f)
 	{
 		m_BuffArray[1]->Set_BuffTime(_SetTime);
 		m_fItemMoveSpeed = _SetSpeed;

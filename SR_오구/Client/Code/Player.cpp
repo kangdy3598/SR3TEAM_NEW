@@ -74,6 +74,9 @@ HRESULT CPlayer::Ready_GameObject()
 
 void CPlayer::LateReady_GameObject()
 {
+    m_pStateControlCom->ChangeState(PlayerIdle::GetInstance(), this);
+    m_bNextStage = false;
+
     Engine::CGameObject::LateReady_GameObject();
 
     m_pQuestUI = dynamic_cast<CQuestUI*>(Engine::Get_GameObject(L"Layer_UI", L"Quest_UI"));
@@ -247,7 +250,7 @@ void CPlayer::OnCollisionEnter(CGameObject* _pOther)
     if (_pOther->IncludingType(OBJ_TYPE::HURT_ABLE))
     {
         
-        if (m_bInvincible || !dynamic_cast<CMonster*>(_pOther)->GetActivation())    
+        if (m_bInvincible || !dynamic_cast<CGameObject*>(_pOther)->GetActivation())
             return; 
 
         m_pStateControlCom->ChangeState(PlayerHurt::GetInstance(), this);

@@ -13,6 +13,10 @@ void PlayerDash::Enter()
 
     m_fMoveSpeed = 100.f;
     (dynamic_cast<CPlayer*>(m_CGameObject))->SetMoveSpeed(m_fMoveSpeed);
+    (dynamic_cast<CPlayer*>(m_CGameObject))->SetMoveSpeed(m_fMoveSpeed);
+    float fItemMoveSpeed = (dynamic_cast<CPlayer*>(m_CGameObject))->GetItemMoveSpeed();
+    m_fMoveSpeed += fItemMoveSpeed;
+
     m_fMoveDuration = 0.f;
     m_fDuration = 0.4f;
     m_bZoomOutTrigger = false;

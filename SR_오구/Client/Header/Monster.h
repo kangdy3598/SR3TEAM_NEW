@@ -39,7 +39,7 @@ public:
 	virtual void	SetPlayer(CPlayer* _Player) { m_CPlayer = _Player; }
 	virtual void	GetLayer(CLayer* _layer) { m_pLayer = _layer; }
 	virtual MONSTER_HP	GetMonsterHP() { return m_tMonsterHP; }
-	virtual _bool	GetActivation() { return m_activation; }
+
 protected:
 	virtual HRESULT	Add_Component();
 	virtual void	KnockBack(const _float& fTimeDelta, _vec3 vKnockBackDir);
@@ -90,7 +90,6 @@ protected:
 	_bool m_bInvincible;
 	float m_fMoveSpeed;
 	int m_iDirIndex;
-	bool m_activation;
 
 public:
 	static CMonster* Create(LPDIRECT3DDEVICE9 pGraphicDev);

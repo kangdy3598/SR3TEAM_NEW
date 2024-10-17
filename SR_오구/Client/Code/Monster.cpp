@@ -8,7 +8,6 @@ CMonster::CMonster(LPDIRECT3DDEVICE9 pGraphicDev)
     , m_vKnockBackDir(_vec3(0.f, 0.f, 0.f))
     , m_bKnockBackTrigger(false)
     , m_bInvincible(false)
-    , m_activation(true)
     , m_iDirIndex(0)
 {
 }

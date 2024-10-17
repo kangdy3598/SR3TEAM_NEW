@@ -250,7 +250,7 @@ void CPlayer::OnCollisionEnter(CGameObject* _pOther)
     if (_pOther->IncludingType(OBJ_TYPE::HURT_ABLE))
     {
         
-        if (m_bInvincible || !dynamic_cast<CMonster*>(_pOther)->GetActivation())    
+        if (m_bInvincible || !dynamic_cast<CGameObject*>(_pOther)->GetActivation())
             return; 
 
         m_pStateControlCom->ChangeState(PlayerHurt::GetInstance(), this);

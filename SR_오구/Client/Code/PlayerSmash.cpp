@@ -48,7 +48,7 @@ void PlayerSmash::Update(const _float& fTimeDelta)
             m_pAnimationCom->SetAnimationPause(false);
             dynamic_cast<CDynamicCamera*>(
                 dynamic_cast<CPlayer*>(m_CGameObject)->GetCamera()
-                )->ShakeMove(0.3f);
+                )->ShakeMove(0.3f, 0.2f, 25.f);
 
             TCHAR  szFileName[128] = L"";
             wsprintf(szFileName, L"SFX_%d_OguSmashEffect%d.wav",

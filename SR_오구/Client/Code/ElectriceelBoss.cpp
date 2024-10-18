@@ -22,7 +22,7 @@ CElectriceelBoss::CElectriceelBoss(LPDIRECT3DDEVICE9 pGraphicDev)
 
     m_tInfo.pBossName = L"ÃµµÕ ¹ìÀå¾î";
     m_tInfo.iMaxHP = 6;
-    m_tInfo.iCurHP = 1;
+    m_tInfo.iCurHP = 6;
 }
 
 CElectriceelBoss::~CElectriceelBoss()
@@ -932,7 +932,7 @@ void CElectriceelBoss::Render_GameObject()
 
 
     //¸ÊÅø ÀÛ¼º½Ã ²ô±â 
-    ////m_pBoundBox->Render_Buffer();   
+    //////m_pBoundBox->Render_Buffer();   
     m_pGraphicDev->SetRenderState(D3DRS_CULLMODE, D3DCULL_CCW);
 }
 

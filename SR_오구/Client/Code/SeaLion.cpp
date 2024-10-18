@@ -63,7 +63,7 @@ void CSeaLion::Render_GameObject()
     m_pGraphicDev->SetTexture(0, m_pTex);
     m_pAnimatorCom->Play(L"SeaLion", true);
     m_pAnimatorCom->render();
-    //m_pColliderCom->Render_Buffer();
+    ////m_pColliderCom->Render_Buffer();
 
     m_pGraphicDev->SetTransform(D3DTS_WORLD, m_pShopTransformCom->Get_WorldMatrix());
     m_pTextureCom->Set_Texture();

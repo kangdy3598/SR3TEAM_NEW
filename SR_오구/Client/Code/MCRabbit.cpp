@@ -69,7 +69,7 @@ void CMCRabbit::Render_GameObject()
     m_pGraphicDev->SetTexture(0, m_pNPCTex);
     m_pAnimatorCom->Play(L"NPCRabbit", true);
     m_pAnimatorCom->render();
-    m_pColliderCom->Render_Buffer();
+    //m_pColliderCom->Render_Buffer();
 }
 
 void CMCRabbit::OnCollision(CGameObject* _pOther)

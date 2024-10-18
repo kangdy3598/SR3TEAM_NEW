@@ -85,7 +85,7 @@ void CGrass::Render_GameObject()
 
 	m_pAnimatorCom->render();
 	//m_pAnimatorCom2->render();
-	////m_pBoundBox->Render_Buffer();		
+	//////m_pBoundBox->Render_Buffer();		
 
 	m_pGraphicDev->SetRenderState(D3DRS_CULLMODE, D3DCULL_CCW);
 }

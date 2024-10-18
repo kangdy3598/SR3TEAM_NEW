@@ -76,7 +76,7 @@ void CNue::Render_GameObject()
         m_pAnimatorCom->Play(L"Nue", true);
 
     m_pAnimatorCom->render();
-    //m_pColliderCom->Render_Buffer();
+    ////m_pColliderCom->Render_Buffer();
 
     if (!m_bQuestClear)
     {

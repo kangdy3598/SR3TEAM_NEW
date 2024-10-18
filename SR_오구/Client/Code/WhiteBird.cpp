@@ -105,7 +105,7 @@ void CWhiteBird::Render_GameObject()
     //}
 
 
-    //m_pColliderCom->Render_Buffer();
+    ////m_pColliderCom->Render_Buffer();
 
     if (!g_bQuestClear)
     {

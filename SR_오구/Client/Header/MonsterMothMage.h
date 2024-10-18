@@ -55,6 +55,7 @@ private:
 	void  SetAttackAnimation();
 
 	_bool CheckPlayerDistance();
+	_bool CheckPlayerChase();
 	void  AttackPlayer();
 
 private:

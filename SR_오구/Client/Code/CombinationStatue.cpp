@@ -81,10 +81,6 @@ void CCombinationStatue::OnCollisionEnter(CGameObject* _pOther)
 
 void CCombinationStatue::OnCollisionExit(CGameObject* _pOther)
 {
-	if (_pOther->GetObjectKey() != L"PlayerInteractionBox")
-		return;
-
-	m_bIsActivate = false;
 }
 
 

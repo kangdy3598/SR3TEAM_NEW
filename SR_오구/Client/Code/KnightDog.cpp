@@ -55,7 +55,7 @@ void CKnightDog::Render_GameObject()
     m_pGraphicDev->SetTexture(0, m_pNPCTex);
     m_pAnimatorCom->Play(L"Dog", true);
     m_pAnimatorCom->render();
-    m_pColliderCom->Render_Buffer();
+    //m_pColliderCom->Render_Buffer();
 }
 
 void CKnightDog::OnCollision(CGameObject* _pOther)

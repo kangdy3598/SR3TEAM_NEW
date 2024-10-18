@@ -147,7 +147,7 @@ void CStone::Render_GameObject()
 	m_pGraphicDev->SetRenderState(D3DRS_CULLMODE, D3DCULL_NONE);
 	m_pGraphicDev->SetTexture(0, m_vecTexture[m_iImageID]);
 	m_pBufferCom->Render_Buffer();
-	m_pBoundBox->Render_Buffer();
+	//m_pBoundBox->Render_Buffer();
 
 	m_pGraphicDev->SetTransform(D3DTS_WORLD, m_pShadowTransformCom->Get_WorldMatrix());
 	m_pShadowTextureCom->Set_Texture();

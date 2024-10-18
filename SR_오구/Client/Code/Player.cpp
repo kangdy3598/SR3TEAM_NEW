@@ -48,7 +48,7 @@ HRESULT CPlayer::Ready_GameObject()
     FAILED_CHECK_RETURN(Add_Component(), E_FAIL);
 
     //민지 임시 코드
-    m_tPlayerHP.iCurHP = 1;
+    m_tPlayerHP.iCurHP = 6;
     m_tPlayerHP.iMaxHP = 6;
     m_eTag = TAG_PLAYER;
     m_pTransformCom->m_vScale = { 10.f,18.f,8.f };
@@ -158,7 +158,7 @@ void CPlayer::Render_GameObject()
     m_pGraphicDev->SetRenderState(D3DRS_CULLMODE, D3DCULL_NONE);
 
     /*if (!m_bInvincible)
-        m_pBoundBox->Render_Buffer();*/
+        //m_pBoundBox->Render_Buffer();*/
 
     ////조명작업
     D3DLIGHT9 tLightInfo;
@@ -218,7 +218,7 @@ void CPlayer::Render_GameObject()
     m_pGraphicDev->SetTransform(D3DTS_WORLD, m_pTransformCom->Get_WorldMatrix());
     m_pGraphicDev->SetRenderState(D3DRS_CULLMODE, D3DCULL_NONE);
     if (!m_bInvincible)
-        m_pBoundBox->Render_Buffer();
+        //m_pBoundBox->Render_Buffer();
 
 
 

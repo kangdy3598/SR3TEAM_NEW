@@ -176,7 +176,7 @@ void CRhinoStone::Render_GameObject()
 		m_pGraphicDev->SetRenderState(D3DRS_CULLMODE, D3DCULL_NONE); // 컬링 ㄴㄴ
 		m_pBufferCom->Render_Buffer();
 		m_pGraphicDev->SetRenderState(D3DRS_CULLMODE, D3DCULL_CCW);
-		//m_pColliderCom->Render_Buffer();
+		////m_pColliderCom->Render_Buffer();
 		return;
 	case STONE_APPEAR: // 돌생성
 		m_pGraphicDev->SetTexture(0, m_pStoneTex);
@@ -200,7 +200,7 @@ void CRhinoStone::Render_GameObject()
 	m_pGraphicDev->SetRenderState(D3DRS_CULLMODE, D3DCULL_NONE); // 컬링 ㄴㄴ
 	m_pAnimatorCom->render();
 	m_pGraphicDev->SetRenderState(D3DRS_CULLMODE, D3DCULL_CCW); // 컬링다시 ㅇㅇ
-	//m_pColliderCom->Render_Buffer();
+	////m_pColliderCom->Render_Buffer();
 }
 
 void CRhinoStone::OnCollision(CGameObject* _pOther)

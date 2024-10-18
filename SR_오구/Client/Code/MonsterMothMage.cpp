@@ -30,7 +30,7 @@ HRESULT CMonsterMothMage::Ready_GameObject()
 
     m_tMonsterHP.iCurHP = 3;
     m_tMonsterHP.iMaxHP = 3;
-    m_fMoveSpeed = 10.f;
+    m_fMoveSpeed = 30.f;
 
 
     return S_OK;
@@ -101,7 +101,7 @@ void CMonsterMothMage::LateUpdate_GameObject(const _float& fTimeDelta)
         if (CheckPlayerDistance())
             AttackPlayer();
 
-        else
+        else if(CheckPlayerChase())
             MoveToPlayer(fTimeDelta);
 
         KnockBack(fTimeDelta, m_vKnockBackDir);
@@ -170,7 +170,7 @@ void CMonsterMothMage::Render_GameObject()
     //m_pTextureCom->Set_Texture(MONSTER);
     //m_pAnimationCom->Render_Buffer();
     if (!m_bInvincible)
-        m_pBoundBox->Render_Buffer();
+        //m_pBoundBox->Render_Buffer();
 
     m_pGraphicDev->SetRenderState(D3DRS_CULLMODE, D3DCULL_CCW);  // 이거 설정안해주면 안됨 전역적으로 장치세팅이 저장되기 때문에
     m_pGraphicDev->SetTexture(0, NULL);  // 이거 설정안해주면 그대로 텍스처 나옴 이것도 마찬가지로 전역적으로 장치세팅이 되므로
@@ -331,6 +331,28 @@ _bool CMonsterMothMage::CheckPlayerDistance()
         m_bIsAttack = false;
 
     return m_bIsAttack;
+}
+
+_bool CMonsterMothMage::CheckPlayerChase()
+{
+    _bool bReturn = false;
+    _vec3 monsterPos;
+    m_pTransformCom->Get_Info(INFO_POS, &monsterPos);
+
+    _vec3 playerPos;
+    dynamic_cast<CTransform*>(
+        m_CPlayer->Get_Component(ID_DYNAMIC, L"Com_Transform"))->Get_Info(INFO_POS, &playerPos);
+
+    _vec3 dir = playerPos - monsterPos;
+    _float distance = D3DXVec3Length(&dir);
+
+    if (distance < 400)
+        return true;
+    else
+        return false;
+
+    return false;
+
 }
 
 void CMonsterMothMage::AttackPlayer()

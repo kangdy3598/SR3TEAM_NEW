@@ -57,7 +57,7 @@ void CTestCol::Render_GameObject()
 
     m_pGraphicDev->SetTexture(0, m_Texture);
     m_pBufferCom->Render_Buffer();
-    ////m_pBoundBox->Render_Buffer();
+    //////m_pBoundBox->Render_Buffer();
 
     m_pGraphicDev->SetRenderState(D3DRS_CULLMODE, D3DCULL_CCW);  // 이거 설정안해주면 안됨 전역적으로 장치세팅이 저장되기 때문에
     m_pGraphicDev->SetTexture(0, NULL);  // 이거 설정안해주면 그대로 텍스처 나옴 이것도 마찬가지로 전역적으로 장치세팅이 되므로

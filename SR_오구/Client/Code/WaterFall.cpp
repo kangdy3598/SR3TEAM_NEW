@@ -193,7 +193,7 @@ void CWaterFall::Render_GameObject()
 		m_pBufferCom->Render_Buffer();	
 
 		//¸ÊÅø ÀÛ¼º½Ã ²ô±â 
-		////m_pBoundBox->Render_Buffer();   
+		//////m_pBoundBox->Render_Buffer();   
 		m_pGraphicDev->SetRenderState(D3DRS_CULLMODE, D3DCULL_CCW);
 
 		return;
@@ -208,7 +208,7 @@ void CWaterFall::Render_GameObject()
 
 		m_pGraphicDev->SetTexture(0, CResMgr::GetInstance()->GetEffectTexture()[1]);
 		m_pAnimatorCom->render();
-		////m_pBoundBox->Render_Buffer();
+		//////m_pBoundBox->Render_Buffer();
 
 		m_pGraphicDev->SetRenderState(D3DRS_CULLMODE, D3DCULL_CCW);
 	}

@@ -69,7 +69,7 @@ void CQuestLion::Render_GameObject()
     m_pGraphicDev->SetTexture(0, m_pNPCTex);
     m_pAnimatorCom->Play(L"Lion", true);
     m_pAnimatorCom->render();
-    //m_pColliderCom->Render_Buffer();
+    ////m_pColliderCom->Render_Buffer();
 
     if (!m_bQuestClear)
     {

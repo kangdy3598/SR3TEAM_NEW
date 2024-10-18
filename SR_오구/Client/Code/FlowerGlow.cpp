@@ -62,7 +62,7 @@ void CFlowerGlow::Render_GameObject()
 	m_pBufferCom->Render_Buffer();
 
 	//m_pGraphicDev->SetTransform(D3DTS_WORLD, m_pTransformCom->Get_WorldMatrix());
-	////m_pBoundBox->Render_Buffer();
+	//////m_pBoundBox->Render_Buffer();
 
 	m_pGraphicDev->SetRenderState(D3DRS_CULLMODE, D3DCULL_CCW);
 }

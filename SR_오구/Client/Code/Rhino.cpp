@@ -219,7 +219,7 @@ void CRhino::Render_GameObject()
         m_pGraphicDev->SetTexture(0, pCurrentTex);
 
     m_pAnimatorCom->render();
-    //m_pColliderCom->Render_Buffer();
+    ////m_pColliderCom->Render_Buffer();
 
     m_ePrevState = m_eState;
 

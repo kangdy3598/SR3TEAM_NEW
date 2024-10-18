@@ -84,10 +84,6 @@ void CMonkeyStatue::OnCollisionEnter(CGameObject* _pOther)
 
 void CMonkeyStatue::OnCollisionExit(CGameObject* _pOther)
 {
-	if (_pOther->GetObjectKey() != L"PlayerInteractionBox")
-		return;
-
-	m_bIsActivate = false;
 }
 
 void CMonkeyStatue::Active_StoneBlock()

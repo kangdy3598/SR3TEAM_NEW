@@ -577,7 +577,7 @@ void CObject::Render_GameObject()
 
 
 	//¸ÊÅø ÀÛ¼º½Ã ²ô±â 
-	////m_pBoundBox->Render_Buffer();
+	//////m_pBoundBox->Render_Buffer();
 	// 
 	
 	if (CManagement::GetInstance()->m_imap_stage == 2)

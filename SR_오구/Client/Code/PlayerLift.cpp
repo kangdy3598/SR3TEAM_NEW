@@ -23,6 +23,7 @@ void PlayerLift::Enter()
         colObjTransform->Get_Info(INFO_POS, &vColPos);
 
         (dynamic_cast<CPlayer*>(m_CGameObject))->SetLiftObj(colObj);
+        (dynamic_cast<CPlayer*>(m_CGameObject))->FixCurPlayerDir(true);
         break;
     case 1: // 오브젝트를 들고 있을 때
         (dynamic_cast<CPlayer*>(m_CGameObject))->SetPlayerState(
@@ -54,6 +55,7 @@ void PlayerLift::Enter()
             PLAYERSTATE::PLY_LIFTEND);
 
         (dynamic_cast<CPlayer*>(m_CGameObject))->SetLiftObj(nullptr);
+        (dynamic_cast<CPlayer*>(m_CGameObject))->FixCurPlayerDir(true);
         break;
     }
 
@@ -130,6 +132,7 @@ void PlayerLift::Update(const _float& fTimeDelta)
 
 void PlayerLift::Exit()
 {
+    (dynamic_cast<CPlayer*>(m_CGameObject))->FixCurPlayerDir(false);
 }
 
 void PlayerLift::MoveAlongBezierCurve(float fTimeDelta, _vec3& currentPosition,

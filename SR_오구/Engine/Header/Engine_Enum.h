@@ -78,7 +78,7 @@ namespace Engine
 		PLY_SWINGKEY	= DIK_A,
 		PLY_LIFTKEY		= DIK_S,
 		PLY_PICKUPKEY	= DIK_S,
-		PLY_ROLLKEY		= DIK_D,
+		PLY_ROLLKEY		= DIK_P,
 		PLY_DANCEKEY	= DIK_Q,
 		PLY_SMASHKEY	= DIK_E,
 		PLY_ENDKEY		= 11 // 키 추가 하면 숫자도 늘려주세요

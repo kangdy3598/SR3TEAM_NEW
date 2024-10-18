@@ -41,7 +41,10 @@ void CTownStage::LateReady_Scene()
 
 	Engine::CScene::LateReady_Scene();
 
-	player->GetCamera()->WalkTo2(pos, 5.f, _vec3(965.f, 30.f, 820.f));
+	if (!player->GetSecondEntermap(1))
+		player->GetCamera()->WalkTo2(pos, 5.f, _vec3(965.f, 30.f, 820.f));
+	player->SetSecondEntermap(1);
+	
 
 }
 
@@ -72,7 +75,9 @@ _int CTownStage::Update_Scene(const _float& fTimeDelta)
 		return 0;
 	}
 
-	if (GetAsyncKeyState('H') & 0x8000)
+	CPlayer* player = dynamic_cast<CPlayer*>(
+		Get_GameObject(L"Layer_GameLogic", L"Player"));
+	if (GetAsyncKeyState('H') & 0x8000 || player->IsNextSceneOn())
 	{
 		Engine::CScene* pStage2 = CWorldHearStage::Create(m_pGraphicDev);
 		NULL_CHECK_RETURN(pStage2, -1);

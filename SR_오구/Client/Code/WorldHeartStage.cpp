@@ -49,7 +49,10 @@ void CWorldHearStage::LateReady_Scene()
 
 	Engine::CScene::LateReady_Scene();
 
+	if(!player->GetSecondEntermap(0))
 	player->GetCamera()->WalkTo2(pos, 10.f, _vec3(1800.f, 180.f, 1670.f));
+	player->SetSecondEntermap(0);
+
 }
 
 _int CWorldHearStage::Update_Scene(const _float& fTimeDelta)

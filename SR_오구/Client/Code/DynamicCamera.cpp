@@ -473,6 +473,8 @@ void CDynamicCamera::ResetWalkTo(_float _fDuration)
 void CDynamicCamera::DirectMoveToPlayer()
 {
     m_vEye = m_vPlayerPos;
+    m_vEye.y += m_vOriginInterval.y;
+    m_vEye.z += m_vOriginInterval.z;
     m_vAt = { 0.f, -1.f, 1.f };
     m_vAt += m_vEye;
 }

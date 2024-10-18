@@ -222,8 +222,8 @@ public:
 	_bool			IsNextSceneOn() { return m_bNextStage; }
 	//조명 예시 
 	HRESULT			SetUp_Material();
-
-
+	void			SetSecondEntermap(int num) { m_bSecondEnterMap[num] = true; }
+	_bool			GetSecondEntermap(int num) { return m_bSecondEnterMap[num]; }
 
 private:
 	HRESULT			Add_Component();
@@ -283,6 +283,8 @@ private:
 	_bool		m_bStoreVisit;
 	_bool		m_bIsInteracting;
 	_bool		m_bNextStage = false;
+	_bool		m_bSecondEnterMap[2] = { false };
+
 public:
 	static CPlayer* Create(LPDIRECT3DDEVICE9 pGraphicDev);
 
